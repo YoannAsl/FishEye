@@ -30,16 +30,30 @@ header {
   margin-bottom: 70px;
 }
 
-.card {
-  width: 270px;
+.cards_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 4%;
 }
 
-.card h2 {
+.cards_container .card {
+  width: 30%;
+  margin: 20px;
+  text-align: center;
+}
+
+.cards_container .card h2 {
   color: #D3573C;
   font-size: 36px;
 }
 
-.card img {
+.cards_container .card img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -49,12 +63,12 @@ header {
           box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.card .location {
+.cards_container .card .location {
   color: #901C1C;
   font-size: 13px;
 }
 
-.card .price {
+.cards_container .card .price {
   color: #757575;
   font-size: 9px;
 }

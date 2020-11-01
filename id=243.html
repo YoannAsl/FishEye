@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/photographers.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <a href="./index.html"><img src="./logo.svg"></a>
+
+    <header>
+        <div>
+            <div class="top_content">
+                <h1>Mimi Keel</h1>
+                <button>Contactez-moi</button>
+            </div>
+            <p class="location">London, UK</p>
+            <p class="tagline">Voir le beau dans le quotidien</p>
+            <div class="tags">
+                <a class="tag" href="#"><span>#portrait</span></a>
+                <a class="tag" href="#"><span>#events</span></a>
+            </div>
+        </div>
+        <img src="./images/Photographers_ID_Photos/MimiKeel.jpg">
+    </header>
+
+    <form>
+        <label for="selector">Trier par</label>
+        <select name="selector" id="selector">
+            <option value="popularité">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+        </select>
+    </form>
+
+    <section class="cards_container">
+
+    </section>
+</body>
+<script src="./photographers.js"></script>
+</html>
