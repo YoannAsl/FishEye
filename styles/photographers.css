@@ -19,6 +19,7 @@ header {
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #FAFAFA;
+  padding: 50px;
 }
 
 header .top_content {
@@ -48,8 +49,9 @@ header .tag {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 11px;
+  font-weight: 500;
   font-size: 12px;
-  padding: 3px;
+  padding: 3px 5px;
 }
 
 header img {
@@ -103,5 +105,69 @@ button, select, option {
   display: flex;
   color: #901C1C;
   font-size: 24px;
+}
+
+.modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(196, 196, 196, 0.4);
+}
+
+.modal div {
+  width: 46%;
+  margin: 5% auto;
+  background-color: #DB8876;
+  border-radius: 5px;
+  padding: 2%;
+  position: relative;
+}
+
+.modal div h1 {
+  font-size: 64px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.modal div .close {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  font-size: 64px;
+  color: white;
+}
+
+.modal div form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal div form * {
+  font-size: 36px;
+  font-weight: normal;
+  color: #312E2E;
+}
+
+.modal div form input {
+  height: 68px;
+}
+
+.modal div form input, .modal div form textarea {
+  border: none;
+  border-radius: 5px;
+}
+
+.modal div form button {
+  font-size: 18px;
+  color: white;
 }
 /*# sourceMappingURL=photographers.css.map */

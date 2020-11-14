@@ -33,35 +33,29 @@ const getData = async () => {
 const createCards = async () => {
     const data = await getData();
     data.photographers.forEach(e => {
+        let listTag = "" ;
+        e.tags.map(e => {
+            listTag += `<a class="tag" href="#"><span>#${e}</span></a>`;
+        });
+
         const newCard = document.createElement("div");
+
+        let url = "./photographer.html";
+        url = url + "?id=" + e.id;
         newCard.className = "card";
         newCard.innerHTML = `
-            <a href="${new URL(`/id=${e.id}.html`, `${window.location.href}`)}">
-                <img src="images/Photographers_ID_Photos/${e.portrait}">
+            <a href="${url}">
+                <img src="images/Photographers ID Photos/${e.portrait}">
                 <h2>${e.name}</h2>
             </a>
             <p class="location">${e.city}, ${e.country}</p>
             <p>${e.tagline}</p>
             <p class="price">${e.price}€/jour</p>
             <div class="tags">
-                <a class="tag" href="#"><span>${e.tags[0]}</span></a>
+                ${listTag}
             </div>
         `;
         cardsContainer.append(newCard);
-        
-        e.tags.map(e => {
-            const tagsContainer = document.querySelector(".tags");
-            const newTag = document.createElement("a");
-            newTag.className = "tag";
-            newTag.setAttribute("href", "#");
-            newTag.innerHTML = `
-                <span>${e}</span>
-            `
-            tagsContainer.append(newTag);
-            // console.log(e)
-            // console.log('--------')
-        });
-        // cardsContainer.append(newCard);
     });
 }
 
