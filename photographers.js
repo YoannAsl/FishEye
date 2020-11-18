@@ -63,8 +63,15 @@ class App {
                 // console.log(e.id);
                 const newCard = document.createElement("div");
                 newCard.className = "card";
+                // newCard.innerHTML = `
+                //     <img src="images/${e.photographerId}/${e.image}" onclick="app.openLightbox(this)">
+                //     <div class="card_text">
+                //         <div class="price">${e.price} €</div>
+                //         <div><span class="likes">${e.likes}</span> <i class="fas fa-heart" onclick="app.addLike(${e.likes})"></i></div>
+                //     </div>
+                // `
                 newCard.innerHTML = `
-                    <img src="images/${e.photographerId}/${e.image}" onclick="app.openLightbox(this)">
+                    <a href="images/${e.photographerId}/${e.image}" data-lightbox="gallery"><img src="images/${e.photographerId}/${e.image}" ></a>
                     <div class="card_text">
                         <div class="price">${e.price} €</div>
                         <div><span class="likes">${e.likes}</span> <i class="fas fa-heart" onclick="app.addLike(${e.likes})"></i></div>
@@ -78,10 +85,6 @@ class App {
     addLike(tag) {
         // tag++;
         console.log(tag.innerHTML);
-    }
-
-    openLightbox(tag) {
-        console.log(tag);
     }
 
     openFormModal() {
