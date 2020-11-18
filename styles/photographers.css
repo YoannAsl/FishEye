@@ -18,32 +18,49 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: #FAFAFA;
   padding: 50px;
+  margin-top: 40px;
 }
 
-header .top_content {
+header div {
+  width: 80%;
+}
+
+header div .top_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-header .top_content h1 {
+header div .top_content h1 {
   color: #D3573C;
   font-size: 64px;
+  margin: 0;
+  margin-right: 15%;
 }
 
-header .location {
+header div .top_content button {
+  font-size: 20px;
+}
+
+header div .location {
   color: #901C1C;
   font-size: 24px;
 }
 
-header .tagline {
+header div .tagline {
   font-size: 18px;
   color: #525252;
 }
 
-header .tag {
+header div .tag {
   color: #901C1C;
   border: 0.5px solid #C4C4C4;
   -webkit-box-sizing: border-box;
@@ -52,6 +69,7 @@ header .tag {
   font-weight: 500;
   font-size: 12px;
   padding: 3px 5px;
+  margin-right: 5px;
 }
 
 header img {

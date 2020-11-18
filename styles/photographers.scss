@@ -14,31 +14,44 @@ a {
 header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     background-color: #FAFAFA;
     padding: 50px;
-    .top_content {
-        display: flex;
-        h1 {
-            color: $primary_light;
-            font-size: 64px;
+    margin-top: 40px;
+    div {
+        width: 80%;
+        .top_content {
+            display: flex;
+            align-items: center;
+            // justify-content: space-between;
+            h1 {
+                color: $primary_light;
+                font-size: 64px;
+                margin: 0;
+                margin-right: 15%;
+            }
+            button {
+                font-size: 20px;
+            }
         }
-    }
-    .location {
-        color: $primary_dark;
-        font-size: 24px;
-    }
-    .tagline {
-        font-size: 18px;
-        color: #525252;
-    }
-    .tag {
-        color: $primary_dark;
-        border: 0.5px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 11px;
-        font-weight: 500;
-        font-size: 12px;
-        padding: 3px 5px;
+        .location {
+            color: $primary_dark;
+            font-size: 24px;
+        }
+        .tagline {
+            font-size: 18px;
+            color: #525252;
+        }
+        .tag {
+            color: $primary_dark;
+            border: 0.5px solid #C4C4C4;
+            box-sizing: border-box;
+            border-radius: 11px;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 3px 5px;
+            margin-right: 5px;
+        }
     }
     img {
         width: 200px;

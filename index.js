@@ -45,7 +45,7 @@ const createCards = async () => {
         newCard.className = "card";
         newCard.innerHTML = `
             <a href="${url}">
-                <img src="images/Photographers ID Photos/${e.portrait}">
+                <img src="images/Photographers_ID_Photos/${e.portrait}">
                 <h2>${e.name}</h2>
             </a>
             <p class="location">${e.city}, ${e.country}</p>
