@@ -1,23 +1,3 @@
-// const test = fetch("./data.json")
-//     .then(res => {
-//         return res.json()
-//     })
-//     .then(data => {
-//         console.log(data.photographers[0])
-//     })
-//     .catch(e => {
-//         console.log("error", e)
-//     });
-
-
-// axios.get("./data.json")
-//     .then(res => {
-//         console.log(res.data);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     })
-
 const cardsContainer = document.querySelector(".cards_container");
 const tagsContainer = document.querySelector(".tags");
 
@@ -35,7 +15,7 @@ const createCards = async () => {
     data.photographers.forEach(e => {
         let listTag = "" ;
         e.tags.map(e => {
-            listTag += `<a class="tag" href="#"><span>#${e}</span></a>`;
+            listTag += `<a class="tag ${e}" href="#"><span>#${e}</span></a>`;
         });
 
         const newCard = document.createElement("div");
@@ -58,5 +38,10 @@ const createCards = async () => {
         cardsContainer.append(newCard);
     });
 }
+
+
+// const sortByTag = tag => {
+//     if (tag.className ==! )
+// }
 
 createCards();

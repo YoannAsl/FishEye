@@ -18,7 +18,7 @@
 
     <form>
         <label for="selector">Trier par</label>
-        <select name="selector" id="selector">
+        <select name="selector" id="selector" onchange="app.sortGallery()">
             <option value="popularité">Popularité</option>
             <option value="date">Date</option>
             <option value="titre">Titre</option>
@@ -48,6 +48,17 @@
     </div>
 
     <script src="lightbox-plus-jquery.js"></script>
+    <script src="./ajax.js"></script>
     <script src="./photographers.js"></script>
+    <script>
+        const app = new Photographers;
+        app.createHeader();
+        app.createImages();
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
+                app.closeFormModal()
+            }
+        });
+    </script>
 </body>
 </html>
