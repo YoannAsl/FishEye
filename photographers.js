@@ -51,8 +51,7 @@ class Photographers {
         const data = await this.ajax.getData();
 
         data.media.forEach(e => {
-            // !== undefined pour ne pas afficher les videos
-            if (e.photographerId == this.id && e.image !== undefined) {
+            if (e.photographerId == this.id) {
                 this.gallery.push(e);
             }
         });
@@ -67,13 +66,27 @@ class Photographers {
         for (let i = 0; i < this.gallery.length; i++) {
             const newCard = document.createElement("div");
             newCard.className = "card";
-            newCard.innerHTML = `
-                <a href="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" data-lightbox="this.gallery"><img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" ></a>
+            // si le fichier est une image
+            if (this.gallery[i].image) {
+                newCard.innerHTML = `
+                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}">
+                    <div class="card_text">
+                        <div class="price">${this.gallery[i].price} €</div>
+                        <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].likes})"></i></div>
+                    </div>
+                `
+            // si le fichier est une video
+            } else if (this.gallery[i].video) {
+                newCard.innerHTML = `
+                <video controls>
+                    <source src="images/${this.gallery[i].photographerId}/${this.gallery[i].video}" type="video/mp4">
+                </video>
                 <div class="card_text">
                     <div class="price">${this.gallery[i].price} €</div>
                     <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].likes})"></i></div>
                 </div>
             `
+            }
             this.cardsContainer.append(newCard);
         }
     }

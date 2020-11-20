@@ -82,7 +82,7 @@ button, select, option {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    img {
+    img, video {
         width: 350px;
         height: 300px;
         object-fit: cover;

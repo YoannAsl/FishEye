@@ -109,7 +109,7 @@ button, select, option {
           justify-content: space-between;
 }
 
-.cards_container img {
+.cards_container img, .cards_container video {
   width: 350px;
   height: 300px;
   -o-object-fit: cover;
