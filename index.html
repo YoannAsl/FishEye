@@ -12,20 +12,25 @@
     <header>
         <img src="logo.svg">
         <nav>
-            <a class="tag portrait" href="#" onclick="sortByTag(this)"><span>#Portrait</span></a>
-            <a class="tag art" href="#" onclick="sortByTag(this)"><span>#Art</span></a>
-            <a class="tag fashion" href="#"><span>#Fashion</span></a>
-            <a class="tag architecture" href="#"><span>#Architecture</span></a>
-            <a class="tag travel" href="#"><span>#Travel</span></a>
-            <a class="tag sport" href="#"><span>#Sport</span></a>
-            <a class="tag animals" href="#"><span>#Animals</span></a>
-            <a class="tag events" href="#"><span>#Events</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Portrait</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Art</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Fashion</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Architecture</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Travel</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Sport</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Animals</span></a>
+            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span class="test">Events</span></a>
         </nav>
     </header>
     <main>
         <section class="cards_container">
         </section>
     </main>
+    <script src="./ajax.js"></script>
     <script src="./index.js"></script>
+    <script>
+        const index = new Index;
+        index.init();
+    </script>
 </body>
 </html>
