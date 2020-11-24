@@ -6,7 +6,7 @@ class Photographers {
         this.header = document.querySelector("header");
         this.cardsContainer = document.querySelector(".cards_container");
         this.modal = document.querySelector(".modal");
-        this.likes = document.getElementsByClassName(".likes");
+        this.likesCount = document.getElementsByClassName(".likes");
         this.queryString = window.location.search;
         this.urlParams = new URLSearchParams(this.queryString);
         this.id = this.urlParams.get("id");
@@ -83,7 +83,7 @@ class Photographers {
                 </video>
                 <div class="card_text">
                     <div class="price">${this.gallery[i].price} €</div>
-                    <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].likes})"></i></div>
+                    <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.likesCount})"></i></div>
                 </div>
             `
             }
@@ -117,7 +117,7 @@ class Photographers {
 
     addLike(tag) {
         // tag++;
-        console.log(tag.innerHTML);
+        console.log(this.likesCount.innerHTML);
     }
 
     openFormModal() {

@@ -50,6 +50,11 @@ header div .top_content button {
   font-size: 20px;
 }
 
+header div .top_content button:hover, header div .top_content button:focus {
+  background-color: #D3573C;
+  color: black;
+}
+
 header div .location {
   color: #901C1C;
   font-size: 24px;
@@ -70,6 +75,12 @@ header div .tag {
   font-size: 12px;
   padding: 3px 5px;
   margin-right: 5px;
+}
+
+header div .tag:hover, header div .tag:focus {
+  background-color: #901C1C;
+  color: white;
+  border-color: #901C1C;
 }
 
 header img {
@@ -96,6 +107,7 @@ button, select, option {
   border: none;
   border-radius: 5px;
   font-weight: bold;
+  font-size: 18px;
 }
 
 .cards_container {

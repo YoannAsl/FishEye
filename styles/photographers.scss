@@ -32,6 +32,10 @@ header {
             }
             button {
                 font-size: 20px;
+                &:hover, &:focus {
+                    background-color: $primary_light;
+                    color: black;
+                }
             }
         }
         .location {
@@ -51,6 +55,11 @@ header {
             font-size: 12px;
             padding: 3px 5px;
             margin-right: 5px;
+            &:hover, &:focus {
+                background-color: $primary_dark;
+                color: white;
+                border-color: $primary_dark;
+            }
         }
     }
     img {
@@ -76,6 +85,7 @@ button, select, option {
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .cards_container {

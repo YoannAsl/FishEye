@@ -2,6 +2,10 @@
   font-family: 'DM Sans', sans-serif;
 }
 
+body {
+  margin-top: 43px;
+}
+
 a {
   text-decoration: none;
 }
@@ -18,11 +22,17 @@ a {
   margin-right: 5px;
 }
 
+.tag:hover, .tag:focus {
+  background-color: #901C1C;
+  color: white;
+  border-color: #901C1C;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 67%;
+  width: 57%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -30,6 +40,17 @@ header {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 70px;
+  padding-left: 9%;
+}
+
+main h1 {
+  position: absolute;
+  top: 44px;
+  right: 120px;
+  margin: 0;
+  color: #901C1C;
+  font-weight: normal;
+  font-size: 36px;
 }
 
 .cards_container {
@@ -41,12 +62,12 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0 4%;
+  padding: 0 2%;
 }
 
 .cards_container .card {
   width: 30%;
-  margin: 20px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
