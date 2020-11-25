@@ -10,7 +10,15 @@ class Photographers {
         this.queryString = window.location.search;
         this.urlParams = new URLSearchParams(this.queryString);
         this.id = this.urlParams.get("id");
-        this.selector = document.querySelector("#selector");
+        // this.selector = document.querySelector("#selector");
+        this.selector = document.querySelector(".selected");
+
+        this.lightbox = document.querySelector(".lightbox");
+        this.lightboxContent = document.querySelector(".lightbox_content");
+        this.slideIndex = "1";
+        this.slides = document.getElementsByClassName("lightboxCard");
+        this.prev = document.querySelector(".prev");
+        this.next = document.querySelector(".next");
     }
 
     async createHeader() {
@@ -57,8 +65,7 @@ class Photographers {
         });
 
         this.sortGallery();
-
-        console.log(this.gallery);
+        // console.log(this.gallery);
     }
     
     updateGallery() {
@@ -69,7 +76,7 @@ class Photographers {
             // si le fichier est une image
             if (this.gallery[i].image) {
                 newCard.innerHTML = `
-                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}">
+                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="app.openLightbox(); app.currentSlide(${i})">
                     <div class="card_text">
                         <div class="price">${this.gallery[i].price} €</div>
                         <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].likes})"></i></div>
@@ -113,6 +120,53 @@ class Photographers {
     sortGallery() {
         this.sortGalleryArray();
         this.updateGallery();
+        this.updateLightbox();
+        // console.log(this.gallery);
+    }
+
+    updateLightbox() {
+        this.lightboxContent.innerHTML = "";
+        for (let i = 0; i < this.gallery.length; i++) {
+            // console.log(i);
+            const newLightboxCard = document.createElement("div");
+            newLightboxCard.className = "lightboxCard";
+            // si le fichier est une image
+            if (this.gallery[i].image) {
+                newLightboxCard.innerHTML = `
+                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}">
+                `
+            // si le fichier est une video
+            } else if (this.gallery[i].video) {
+                newLightboxCard.innerHTML = `
+                    <video controls>
+                        <source src="images/${this.gallery[i].photographerId}/${this.gallery[i].video}" type="video/mp4">
+                    </video>
+                `
+            }
+            this.lightboxContent.append(newLightboxCard);
+        }
+    }
+
+    currentSlide(n) {
+        this.showSlides(this.slideIndex = n);
+    }
+
+    showSlides(n) {
+        // console.log(this.slideIndex);
+        this.slides[n].style.display = "block";
+        this.slideIndex == 0 ? this.prev.style.display = "none" : this.prev.style.display = "block";
+        this.slideIndex == this.gallery.length - 1 ? this.next.style.display = "none" : this.next.style.display = "block";
+    }
+
+    changeSlide(n) {
+        this.resetLightbox();
+        this.showSlides(this.slideIndex += n);
+    }
+
+    resetLightbox() {
+        for (let i = 0; i < this.slides.length; i++) {
+            this.slides[i].style.display = "none";
+        }
     }
 
     addLike(tag) {
@@ -126,5 +180,14 @@ class Photographers {
 
     closeFormModal() {
         this.modal.style.display = "none";
+    }
+
+    openLightbox() {
+        this.lightbox.style.display = "block";
+    }
+
+    closeLightbox() {
+        this.lightbox.style.display = "none";
+        this.resetLightbox();
     }
 }

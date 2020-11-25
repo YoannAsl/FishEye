@@ -24,6 +24,19 @@
         </select>
     </form>
 
+    <div class="select_wrapper">
+        <div class="select">
+            <div class="select_trigger"><span>Popularité</span>
+                <div class="arrow"></div>
+            </div>
+            <ul class="options">
+                <li class="option selected" data-value="popularité" onclick="app.sortGallery()">Popularité</li>
+                <li class="option" data-value="date" onclick="app.sortGallery()">Date</li>
+                <li class="option" data-value="titre" onclick="app.sortGallery()">Titre</li>
+            </ul>
+        </div>
+    </div>
+
     <section class="cards_container">
     </section>
 
@@ -46,6 +59,14 @@
         </div>
     </div>
 
+    <div class="lightbox">
+        <!-- <span class="close" onclick="app.closeLightbox()">&times;</span> -->
+        <i class="fas fa-times close" onclick="app.closeLightbox()"></i>
+        <div class="lightbox_content"></div>
+        <a class="prev" onclick="app.changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="app.changeSlide(1)">&#10095;</a>
+    </div>
+
     <script src="./ajax.js"></script>
     <script src="./photographers.js"></script>
     <script>
@@ -54,7 +75,36 @@
         app.createImages();
         document.addEventListener("keydown", e => {
             if (e.key === "Escape") {
-                app.closeFormModal()
+                app.closeFormModal();
+                app.closeLightbox();
+            }
+        });
+        
+        for (const option of document.querySelectorAll(".option")) {
+            option.addEventListener('click', function() {
+                if (!this.classList.contains('selected')) {
+                    this.parentNode.querySelector('.option.selected').classList.remove('selected');
+                    this.classList.add('selected');
+                    this.closest('.select').querySelector('.select_trigger span').textContent = this.textContent;
+                }
+            })
+        };
+        document.querySelector('.select_wrapper').addEventListener('click', function() {
+            this.querySelector('.select').classList.toggle('open');
+        });
+        for (const option of document.querySelectorAll(".option")) {
+            option.addEventListener('click', function() {
+                if (!this.classList.contains('selected')) {
+                    this.parentNode.querySelector('.option.selected').classList.remove('selected');
+                    this.classList.add('selected');
+                    this.closest('.select').querySelector('.select_trigger span').textContent = this.textContent;
+                }
+            })
+        };
+        window.addEventListener('click', function(e) {
+            const select = document.querySelector('.select')
+            if (!select.contains(e.target)) {
+                select.classList.remove('open');
             }
         });
     </script>
