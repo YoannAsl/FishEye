@@ -40,7 +40,7 @@
     <section class="cards_container">
     </section>
 
-    <div class="modal">
+    <dialog class="modal">
         <div>
             <h1>Contactez-moi</h1>
             <i class="fas fa-times close" onclick="app.closeFormModal()"></i>
@@ -57,14 +57,13 @@
                 <button type="submit" form="form1" value="Envoyer">Envoyer</button>
             </form>
         </div>
-    </div>
+    </dialog>
 
     <div class="lightbox">
-        <!-- <span class="close" onclick="app.closeLightbox()">&times;</span> -->
-        <i class="fas fa-times close" onclick="app.closeLightbox()"></i>
+        <i class="fas fa-chevron-left prev" onclick="app.changeSlide(-1)"></i>
         <div class="lightbox_content"></div>
-        <a class="prev" onclick="app.changeSlide(-1)">&#10094;</a>
-        <a class="next" onclick="app.changeSlide(1)">&#10095;</a>
+        <i class="fas fa-times close" onclick="app.closeLightbox()"></i>
+        <i class="fas fa-chevron-right next" onclick="app.changeSlide(1)"></i>
     </div>
 
     <script src="./ajax.js"></script>
@@ -77,6 +76,12 @@
             if (e.key === "Escape") {
                 app.closeFormModal();
                 app.closeLightbox();
+            }
+            if (e.key === "ArrowLeft" && app.prev.style.visibility == "visible") {
+                app.changeSlide(-1);
+            }
+            if (e.key === "ArrowRight" && app.next.style.visibility == "visible") {
+                app.changeSlide(1);
             }
         });
         
@@ -98,6 +103,7 @@
                     this.parentNode.querySelector('.option.selected').classList.remove('selected');
                     this.classList.add('selected');
                     this.closest('.select').querySelector('.select_trigger span').textContent = this.textContent;
+                    app.sortGallery();
                 }
             })
         };

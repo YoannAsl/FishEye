@@ -10,12 +10,13 @@ class Photographers {
         this.queryString = window.location.search;
         this.urlParams = new URLSearchParams(this.queryString);
         this.id = this.urlParams.get("id");
+
         // this.selector = document.querySelector("#selector");
         this.selector = document.querySelector(".selected");
 
         this.lightbox = document.querySelector(".lightbox");
         this.lightboxContent = document.querySelector(".lightbox_content");
-        this.slideIndex = "1";
+        this.slideIndex = "";
         this.slides = document.getElementsByClassName("lightboxCard");
         this.prev = document.querySelector(".prev");
         this.next = document.querySelector(".next");
@@ -57,13 +58,11 @@ class Photographers {
 
     async createImages() {
         const data = await this.ajax.getData();
-
         data.media.forEach(e => {
             if (e.photographerId == this.id) {
                 this.gallery.push(e);
             }
         });
-
         this.sortGallery();
         // console.log(this.gallery);
     }
@@ -79,7 +78,10 @@ class Photographers {
                 <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="app.openLightbox(); app.currentSlide(${i})">
                     <div class="card_text">
                         <div class="price">${this.gallery[i].price} €</div>
-                        <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].likes})"></i></div>
+                        <div>
+                            <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
+                            <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
+                        </div>
                     </div>
                 `
             // si le fichier est une video
@@ -90,7 +92,10 @@ class Photographers {
                 </video>
                 <div class="card_text">
                     <div class="price">${this.gallery[i].price} €</div>
-                    <div><span class="likes">${this.gallery[i].likes}</span> <i class="fas fa-heart" onclick="app.addLike(${this.likesCount})"></i></div>
+                        <div>
+                            <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
+                            <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
+                    </div>
                 </div>
             `
             }
@@ -133,7 +138,7 @@ class Photographers {
             // si le fichier est une image
             if (this.gallery[i].image) {
                 newLightboxCard.innerHTML = `
-                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}">
+                    <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}">
                 `
             // si le fichier est une video
             } else if (this.gallery[i].video) {
@@ -154,8 +159,9 @@ class Photographers {
     showSlides(n) {
         // console.log(this.slideIndex);
         this.slides[n].style.display = "block";
-        this.slideIndex == 0 ? this.prev.style.display = "none" : this.prev.style.display = "block";
-        this.slideIndex == this.gallery.length - 1 ? this.next.style.display = "none" : this.next.style.display = "block";
+        // Visibility pour pas déplacer l'image quand l'element disparait
+        this.slideIndex == 0 ? this.prev.style.visibility = "hidden" : this.prev.style.visibility = "visible";
+        this.slideIndex == this.gallery.length - 1 ? this.next.style.visibility = "hidden" : this.next.style.visibility = "visible";
     }
 
     changeSlide(n) {
@@ -170,8 +176,13 @@ class Photographers {
     }
 
     addLike(tag) {
-        // tag++;
-        console.log(this.likesCount.innerHTML);
+        let tagselect = document.querySelector(`#like_${tag}`);
+        // console.log(tag);
+        let nbLikes = parseInt(tagselect.textContent);
+        nbLikes += 1;
+        tagselect.textContent = nbLikes;
+        console.log(tagselect.textContent)
+
     }
 
     openFormModal() {
@@ -183,7 +194,7 @@ class Photographers {
     }
 
     openLightbox() {
-        this.lightbox.style.display = "block";
+        this.lightbox.style.display = "flex";
     }
 
     closeLightbox() {

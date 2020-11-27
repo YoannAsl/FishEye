@@ -283,17 +283,23 @@ button, select, option {
         color: $primary_dark;
     }
     .lightbox_content {
-        display: flex;
-        flex-wrap: wrap;
+        margin: auto;
         .lightboxCard {
             display: none;
             img, video {
-                // display: none;
-                height: 200px;
-                width: 200px;
+                height: 900px;
+                width: 1000px;
                 border-radius: 5px;
                 object-fit: cover;
             }
         }
+    }
+    .prev {
+        color: $primary_dark;
+        font-size: 70px;
+    }
+    .next {
+        color: $primary_dark;
+        font-size: 70px;
     }
 }

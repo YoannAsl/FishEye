@@ -354,11 +354,7 @@ button, select, option {
 }
 
 .lightbox .lightbox_content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  margin: auto;
 }
 
 .lightbox .lightbox_content .lightboxCard {
@@ -366,10 +362,20 @@ button, select, option {
 }
 
 .lightbox .lightbox_content .lightboxCard img, .lightbox .lightbox_content .lightboxCard video {
-  height: 200px;
-  width: 200px;
+  height: 900px;
+  width: 1000px;
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.lightbox .prev {
+  color: #901C1C;
+  font-size: 70px;
+}
+
+.lightbox .next {
+  color: #901C1C;
+  font-size: 70px;
 }
 /*# sourceMappingURL=photographers.css.map */
