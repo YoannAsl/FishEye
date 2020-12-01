@@ -2,7 +2,6 @@ class Photographers {
     constructor() {
         this.gallery = [];
         this.ajax = new Ajax;
-        
         this.header = document.querySelector("header");
         this.cardsContainer = document.querySelector(".cards_container");
         this.modal = document.querySelector(".modal");
@@ -10,16 +9,7 @@ class Photographers {
         this.queryString = window.location.search;
         this.urlParams = new URLSearchParams(this.queryString);
         this.id = this.urlParams.get("id");
-
-        // this.selector = document.querySelector("#selector");
-        this.selector = document.querySelector(".selected");
-
-        this.lightbox = document.querySelector(".lightbox");
-        this.lightboxContent = document.querySelector(".lightbox_content");
-        this.slideIndex = "";
-        this.slides = document.getElementsByClassName("lightboxCard");
-        this.prev = document.querySelector(".prev");
-        this.next = document.querySelector(".next");
+        this.selector = document.querySelector("#selector");
     }
 
     async createHeader() {
@@ -64,7 +54,6 @@ class Photographers {
             }
         });
         this.sortGallery();
-        // console.log(this.gallery);
     }
     
     updateGallery() {
@@ -75,26 +64,28 @@ class Photographers {
             // si le fichier est une image
             if (this.gallery[i].image) {
                 newCard.innerHTML = `
-                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="app.openLightbox(); app.currentSlide(${i})">
-                    <div class="card_text">
-                        <div class="price">${this.gallery[i].price} €</div>
-                        <div>
-                            <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
-                            <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
-                        </div>
+                <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="lb.openLightbox(); lb.currentSlide(${i})">
+                <div class="card_text">
+                    <div class="img_name"></div>
+                    <div class="price">${this.gallery[i].price} €</div>
+                    <div>
+                        <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
+                        <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
                     </div>
+                </div>
                 `
             // si le fichier est une video
             } else if (this.gallery[i].video) {
                 newCard.innerHTML = `
-                <video controls>
+                <video onclick="lb.openLightbox(); lb.currentSlide(${i})">
                     <source src="images/${this.gallery[i].photographerId}/${this.gallery[i].video}" type="video/mp4">
                 </video>
                 <div class="card_text">
+                    <div class="img_name"></div>
                     <div class="price">${this.gallery[i].price} €</div>
-                        <div>
-                            <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
-                            <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
+                    <div>
+                        <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
+                        <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
                     </div>
                 </div>
             `
@@ -104,19 +95,19 @@ class Photographers {
     }
 
     sortGalleryArray() {
-        switch (this.selector.value) {
-            case "popularité": 
+        switch (this.selector.innerHTML) {
+            case "Popularité": 
                 this.gallery.sort((a, b) => {
                     // b avant a pour ordre décroissant
                     return b.likes - a.likes;
                 });
                 break;
-            case "date":
+            case "Date":
                 this.gallery.sort((a, b) => {
                     return new Date(b.date) - new Date(a.date);
                 });
                 break;
-            case "titre":
+            case "Titre":
                 this.gallery.sort((a, b) => a.image.localeCompare(b.image))
                 break;
         }
@@ -125,64 +116,14 @@ class Photographers {
     sortGallery() {
         this.sortGalleryArray();
         this.updateGallery();
-        this.updateLightbox();
-        // console.log(this.gallery);
-    }
-
-    updateLightbox() {
-        this.lightboxContent.innerHTML = "";
-        for (let i = 0; i < this.gallery.length; i++) {
-            // console.log(i);
-            const newLightboxCard = document.createElement("div");
-            newLightboxCard.className = "lightboxCard";
-            // si le fichier est une image
-            if (this.gallery[i].image) {
-                newLightboxCard.innerHTML = `
-                    <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}">
-                `
-            // si le fichier est une video
-            } else if (this.gallery[i].video) {
-                newLightboxCard.innerHTML = `
-                    <video controls>
-                        <source src="images/${this.gallery[i].photographerId}/${this.gallery[i].video}" type="video/mp4">
-                    </video>
-                `
-            }
-            this.lightboxContent.append(newLightboxCard);
-        }
-    }
-
-    currentSlide(n) {
-        this.showSlides(this.slideIndex = n);
-    }
-
-    showSlides(n) {
-        // console.log(this.slideIndex);
-        this.slides[n].style.display = "block";
-        // Visibility pour pas déplacer l'image quand l'element disparait
-        this.slideIndex == 0 ? this.prev.style.visibility = "hidden" : this.prev.style.visibility = "visible";
-        this.slideIndex == this.gallery.length - 1 ? this.next.style.visibility = "hidden" : this.next.style.visibility = "visible";
-    }
-
-    changeSlide(n) {
-        this.resetLightbox();
-        this.showSlides(this.slideIndex += n);
-    }
-
-    resetLightbox() {
-        for (let i = 0; i < this.slides.length; i++) {
-            this.slides[i].style.display = "none";
-        }
+        lb.updateLightbox();
     }
 
     addLike(tag) {
         let tagselect = document.querySelector(`#like_${tag}`);
-        // console.log(tag);
         let nbLikes = parseInt(tagselect.textContent);
         nbLikes += 1;
         tagselect.textContent = nbLikes;
-        console.log(tagselect.textContent)
-
     }
 
     openFormModal() {
@@ -191,14 +132,5 @@ class Photographers {
 
     closeFormModal() {
         this.modal.style.display = "none";
-    }
-
-    openLightbox() {
-        this.lightbox.style.display = "flex";
-    }
-
-    closeLightbox() {
-        this.lightbox.style.display = "none";
-        this.resetLightbox();
     }
 }

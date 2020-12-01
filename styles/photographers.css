@@ -281,6 +281,8 @@ button, select, option {
   left: 0;
   top: 0;
   background-color: rgba(196, 196, 196, 0.4);
+  border: none;
+  padding: 0;
 }
 
 .modal div {
