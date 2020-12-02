@@ -66,7 +66,7 @@ class Photographers {
                 newCard.innerHTML = `
                 <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="lb.openLightbox(); lb.currentSlide(${i})">
                 <div class="card_text">
-                    <div class="img_name"></div>
+                    <div class="img_name">${this.gallery[i].photographerId}</div>
                     <div class="price">${this.gallery[i].price} €</div>
                     <div>
                         <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
@@ -81,7 +81,7 @@ class Photographers {
                     <source src="images/${this.gallery[i].photographerId}/${this.gallery[i].video}" type="video/mp4">
                 </video>
                 <div class="card_text">
-                    <div class="img_name"></div>
+                    <div class="img_name">${this.gallery[i].photographerId}</div>
                     <div class="price">${this.gallery[i].price} €</div>
                     <div>
                         <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 

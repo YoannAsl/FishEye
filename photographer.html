@@ -45,7 +45,7 @@
                 <input type="email" id="email" name="email" required>
                 <label for="message">Votre message</label>
                 <textarea name="message" id="message" rows="4"></textarea>
-                <button type="submit" form="form1" value="Envoyer">Envoyer</button>
+                <button id="submit_button" type="submit" form="form1" value="Envoyer">Envoyer</button>
             </form>
         </div>
     </dialog>
@@ -100,6 +100,11 @@
             if (!select.contains(e.target)) {
                 select.classList.remove('open');
             }
+        });
+
+        document.querySelector("#submit_button").addEventListener("click", event => {
+            event.preventDefault();
+            console.log(document.querySelector("#prenom").value, document.querySelector("#nom").value, document.querySelector("#message").value)
         });
     </script>
 </body>

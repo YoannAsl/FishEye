@@ -212,6 +212,7 @@ button, select, option {
     }
     .card_text {
         display: flex;
+        justify-content: space-between;
         color: $primary_dark;
         font-size: 24px;
     }
