@@ -10,6 +10,8 @@ class Photographers {
         this.urlParams = new URLSearchParams(this.queryString);
         this.id = this.urlParams.get("id");
         this.selector = document.querySelector("#selector");
+        this.bottomDiv = document.querySelector(".bottom_div");
+        this.photographer = "";
     }
 
     async createHeader() {
@@ -18,7 +20,10 @@ class Photographers {
         for (let i = 0; i < photographers.length; i++) {
             if (photographers[i].id == this.id) {
                 const ph = photographers[i];
+                this.photographer = ph;
                 const headerContent = document.createElement("div");
+                const profilePic = document.createElement("img");
+                const modalName = document.querySelector("#modal_name");
 
                 let listTag = "" ;
                 ph.tags.map(tag => {
@@ -36,16 +41,15 @@ class Photographers {
                         ${listTag}
                     </div>
                 `;
-                const profilePic = document.createElement("img");
+                
                 profilePic.src = `./images/Photographers_ID_Photos/${ph.portrait}`;
                 this.header.append(headerContent, profilePic);
 
-                const modalName = document.querySelector("#modal_name");
                 modalName.innerHTML = `${ph.name}`;
             }
         } 
     }
-
+    
     async createImages() {
         const data = await this.ajax.getData();
         data.media.forEach(e => {
@@ -66,12 +70,12 @@ class Photographers {
                 newCard.innerHTML = `
                 <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="lb.openLightbox(); lb.currentSlide(${i})">
                 <div class="card_text">
-                    <div class="img_name">${this.gallery[i].photographerId}</div>
-                    <div class="price">${this.gallery[i].price} €</div>
-                    <div>
+                    <p class="img_title">${this.gallery[i].title}</p>
+                    <p class="price">${this.gallery[i].price} €</p>
+                    <p>
                         <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
                         <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
-                    </div>
+                    </p>
                 </div>
                 `
             // si le fichier est une video
@@ -81,12 +85,12 @@ class Photographers {
                     <source src="images/${this.gallery[i].photographerId}/${this.gallery[i].video}" type="video/mp4">
                 </video>
                 <div class="card_text">
-                    <div class="img_name">${this.gallery[i].photographerId}</div>
-                    <div class="price">${this.gallery[i].price} €</div>
-                    <div>
+                    <p class="img_title">${this.gallery[i].title}</p>
+                    <p class="price">${this.gallery[i].price} €</p>
+                    <p>
                         <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
                         <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
-                    </div>
+                    </p>
                 </div>
             `
             }
@@ -108,7 +112,12 @@ class Photographers {
                 });
                 break;
             case "Titre":
-                this.gallery.sort((a, b) => a.image.localeCompare(b.image))
+                this.gallery.sort((a, b) => a.title.localeCompare(b.title))
+                // this.gallery.sort((a, b) => {
+                //     typeof a.image == "undefined" ? a = a.video : a = a.image;
+                //     typeof b.image == "undefined" ? b = b.video : b = b.image;
+                //     return a.localeCompare(b);
+                // });
                 break;
         }
     }
@@ -117,6 +126,18 @@ class Photographers {
         this.sortGalleryArray();
         this.updateGallery();
         lb.updateLightbox();
+        this.createBottomDiv();
+    }
+
+    createBottomDiv() {
+        let totalLikes = 0;
+        this.gallery.forEach(l => {
+            totalLikes += l.likes;
+        })
+        this.bottomDiv.innerHTML = `
+            <p><span id="totalLikes">${totalLikes}</span> <i class="fas fa-heart""></i></p>
+            <p>${this.photographer.price}€ / jour</p>
+        `
     }
 
     addLike(tag) {
@@ -124,6 +145,9 @@ class Photographers {
         let nbLikes = parseInt(tagselect.textContent);
         nbLikes += 1;
         tagselect.textContent = nbLikes;
+
+        let totalLikesSelector = document.querySelector("#totalLikes");
+        totalLikesSelector.innerHTML ++;
     }
 
     openFormModal() {

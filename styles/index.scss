@@ -48,18 +48,20 @@ main h1 {
 }
 
 .cards_container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 3%;
+    grid-row-gap: 6%;
+
+    // flex-wrap: wrap;
+    // justify-content: space-between;
     padding: 0 2%;
     .card {
-        width: 30%;
-        margin-bottom: 50px;
+        width: 100%;
         text-align: center;
         h2 {
             color: $primary_light;
             font-size: 36px;
-            // white-space: nowrap;
         }
         img {
             width: 200px;

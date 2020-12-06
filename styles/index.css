@@ -54,20 +54,17 @@ main h1 {
 }
 
 .cards_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 3%;
+  grid-row-gap: 6%;
   padding: 0 2%;
 }
 
 .cards_container .card {
-  width: 30%;
-  margin-bottom: 50px;
+  width: 100%;
   text-align: center;
 }
 
