@@ -5,7 +5,7 @@
 }
 
 body {
-    margin-top: 43px;
+    margin: 0;
 }
 
 a {
@@ -34,17 +34,17 @@ header {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 70px;
+    padding-top: 40px;
     padding-left: 9%;
-}
-
-main h1 {
-    position: absolute;
-    top: 44px;
-    right: 120px;
-    margin: 0;
-    color: $primary_dark;
-    font-weight: normal;
-    font-size: 36px;
+    #test h1 {
+        position: absolute;
+        top: 44px;
+        right: 120px;
+        margin: 0;
+        color: $primary_dark;
+        font-weight: normal;
+        font-size: 36px;
+    }
 }
 
 .cards_container {
@@ -52,9 +52,6 @@ main h1 {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 3%;
     grid-row-gap: 6%;
-
-    // flex-wrap: wrap;
-    // justify-content: space-between;
     padding: 0 2%;
     .card {
         width: 100%;
@@ -62,6 +59,11 @@ main h1 {
         h2 {
             color: $primary_light;
             font-size: 36px;
+            margin: 0;
+        }
+        p {
+            margin: 3px 0;
+            font-size: 10px;
         }
         img {
             width: 200px;
@@ -78,6 +80,70 @@ main h1 {
             color: $price_color;
             font-size: 9px;
         }
+        .tags {
+            margin-top: 6px;
+        }
     }
 }
 
+#linktomain {
+    display: none;
+    text-decoration: none;
+    background: #DB8876;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 8px;
+    position: fixed;
+    margin: 0 auto;
+    top: 6px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    &:active, &:visited {
+        color: black;
+    }
+}
+
+@media (max-width:961px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 25px;
+        #test {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            #logo {
+                width: 150px;
+            }
+            h1 {
+                position: initial;
+                font-size: 14px;
+            }
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .tag {
+                margin-bottom: 6px;
+            }
+        }
+    }
+    .cards_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        .card {
+            margin: 20px auto;
+        }
+    }
+}

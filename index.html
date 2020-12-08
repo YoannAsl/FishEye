@@ -10,7 +10,11 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo.svg" alt="Fisheye Home page"></a>
+        <div id="test">
+            <a href="index.html"><img id="logo" src="logo.svg" alt="Fisheye Home page"></a>
+            <h1>Nos photographes</h1>
+        </div>
+        
         <nav>
             <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span>Portrait</span></a>
             <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span>Art</span></a>
@@ -22,11 +26,13 @@
             <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span>Events</span></a>
         </nav>
     </header>
-    <main>
-        <h1>Nos photographes</h1>
+    <main id="main">
         <section class="cards_container">
         </section>
     </main>
+
+    <a id="linktomain" href="#main">Passer au contenu</a>
+
     <script src="./ajax.js"></script>
     <script src="./index.js"></script>
     <script>

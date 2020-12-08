@@ -5,6 +5,7 @@ class Index {
         
         this.cardsContainer = document.querySelector(".cards_container");
         this.tagsContainer = document.querySelector(".tags");
+        this.linkToMain = document.querySelector("#linktomain");
     }
     
     async init() {
@@ -12,7 +13,8 @@ class Index {
         data.photographers.forEach(e => {
             this.phList.push(e);
         });
-        this.createCards()
+        this.createCards();
+        window.addEventListener("scroll", this.showDivOnScroll);
     }
 
     createCards() {
@@ -55,5 +57,9 @@ class Index {
         });
         this.cardsContainer.innerHTML = "";
         this.createCards();
+    }
+
+    showDivOnScroll() {
+        window.scrollY >= 200 ? this.linktomain.style.display = "block" : this.linktomain.style.display = "none";
     }
 }
