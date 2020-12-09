@@ -4,6 +4,7 @@
 
 body {
   padding: 0 5%;
+  margin: 0;
 }
 
 a {
@@ -15,7 +16,15 @@ ul {
   margin: 0;
 }
 
+p {
+  margin: 0;
+}
+
 header {
+  margin-top: 40px;
+}
+
+.banner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,11 +40,11 @@ header {
   margin-top: 40px;
 }
 
-header div {
+.banner > div {
   width: 80%;
 }
 
-header div .top_content {
+.banner > div .top_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,33 +53,34 @@ header div .top_content {
           align-items: center;
 }
 
-header div .top_content h1 {
+.banner > div .top_content h1 {
   color: #D3573C;
   font-size: 64px;
   margin: 0;
   margin-right: 15%;
 }
 
-header div .top_content button {
+.banner > div .top_content button {
   font-size: 20px;
 }
 
-header div .top_content button:hover, header div .top_content button:focus {
+.banner > div .top_content button:hover, .banner > div .top_content button:focus {
   background-color: #DB8876;
   color: black;
 }
 
-header div .location {
+.banner > div .location {
   color: #901C1C;
   font-size: 24px;
 }
 
-header div .tagline {
+.banner > div .tagline {
   font-size: 18px;
   color: #525252;
+  margin: 19px 0;
 }
 
-header div .tag {
+.banner > div .tag {
   color: #901C1C;
   border: 0.5px solid #C4C4C4;
   -webkit-box-sizing: border-box;
@@ -82,13 +92,13 @@ header div .tag {
   margin-right: 5px;
 }
 
-header div .tag:hover, header div .tag:focus {
+.banner > div .tag:hover, .banner > div .tag:focus {
   background-color: #901C1C;
   color: white;
   border-color: #901C1C;
 }
 
-header img {
+.banner img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -280,6 +290,17 @@ button, select, option {
           margin-block-end: 0;
 }
 
+.cards_container .card_text .price_likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 500;
+}
+
+.cards_container .card_text .likes {
+  margin-left: 15px;
+}
+
 .modal {
   display: none;
   width: 100%;
@@ -358,9 +379,25 @@ button, select, option {
   border: none;
 }
 
-.lightbox .close {
+.lightbox .close, .lightbox .next, .lightbox .prev {
   font-size: 70px;
   color: #901C1C;
+  position: absolute;
+}
+
+.lightbox .next {
+  top: 48%;
+  right: 170px;
+}
+
+.lightbox .prev {
+  top: 48%;
+  left: 170px;
+}
+
+.lightbox .close {
+  right: 170px;
+  top: 2%;
 }
 
 .lightbox .lightbox_content {
@@ -379,6 +416,10 @@ button, select, option {
      object-fit: cover;
 }
 
+.lightbox .lightbox_content .lightboxCard .img_title {
+  color: #901C1C;
+}
+
 .lightbox .prev {
   color: #901C1C;
   font-size: 70px;
@@ -394,6 +435,10 @@ button, select, option {
   bottom: 0;
   right: 35px;
   width: 375px;
+  height: 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #DB8876;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -406,5 +451,135 @@ button, select, option {
   border-top-right-radius: 5px;
   padding: 0 2%;
   font-weight: 500;
+}
+
+@media (max-width: 961px) {
+  body {
+    padding: 0 20px;
+  }
+  #logo {
+    width: 150px;
+  }
+  .banner {
+    background-color: initial;
+    padding: 0;
+    margin-top: 25px;
+    margin-bottom: 45px;
+  }
+  .banner > div .top_content h1 {
+    font-size: 36px;
+    margin: 0;
+  }
+  .banner > div .top_content button {
+    height: 35px;
+    font-size: 18px;
+    white-space: nowrap;
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+  }
+  .banner > div .tagline {
+    margin: 4px 0;
+    font-size: 13px;
+  }
+  .banner > div .tags {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .banner > div .tag, .banner > div .location {
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+  .banner img {
+    width: 100px;
+    height: 100px;
+  }
+  .select_wrapper, #select_wrapper_label {
+    display: none;
+  }
+  .cards_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .cards_container img, .cards_container video {
+    width: 100%;
+    height: 190px;
+  }
+  .cards_container .card_text {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .modal div {
+    width: 100%;
+    height: 100%;
+    padding: 15px 20px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+  }
+  .modal div h1 {
+    font-size: 36px;
+  }
+  .modal div #modal_name {
+    margin-bottom: 12px;
+  }
+  .modal div .close {
+    font-size: 32px;
+    top: 25px;
+    right: 25px;
+  }
+  .modal div form * {
+    font-size: 24px;
+  }
+  .modal div form label {
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  .modal div form input {
+    height: 52px;
+  }
+  .modal div form textarea {
+    height: 185px;
+    margin-bottom: 25px;
+  }
+  .modal div form button {
+    margin: 0 auto;
+    height: 35px;
+  }
+  .lightbox {
+    background-color: white;
+  }
+  .lightbox .lightbox_content .lightboxCard img, .lightbox .lightbox_content .lightboxCard video {
+    height: 250px;
+    width: 290px;
+  }
+  .lightbox .close, .lightbox .next, .lightbox .prev {
+    font-size: 20px;
+  }
+  .lightbox .next {
+    top: 48%;
+    right: 20px;
+  }
+  .lightbox .prev {
+    top: 48%;
+    left: 20px;
+  }
+  .lightbox .close {
+    right: 20px;
+    top: 33%;
+  }
+  .bottom_div {
+    display: none;
+  }
 }
 /*# sourceMappingURL=photographers.css.map */

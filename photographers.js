@@ -2,7 +2,7 @@ class Photographers {
     constructor() {
         this.gallery = [];
         this.ajax = new Ajax;
-        this.header = document.querySelector("header");
+        this.main = document.querySelector("main");
         this.cardsContainer = document.querySelector(".cards_container");
         this.modal = document.querySelector(".modal");
         this.likesCount = document.getElementsByClassName(".likes");
@@ -14,15 +14,15 @@ class Photographers {
         this.photographer = "";
     }
 
-    async createHeader() {
+    async createBanner() {
         const data = await this.ajax.getData();
         const photographers = data.photographers;
         for (let i = 0; i < photographers.length; i++) {
             if (photographers[i].id == this.id) {
                 const ph = photographers[i];
                 this.photographer = ph;
-                const headerContent = document.createElement("div");
-                const profilePic = document.createElement("img");
+                const bannerContent = document.createElement("div");
+                bannerContent.className = "banner";
                 const modalName = document.querySelector("#modal_name");
 
                 let listTag = "" ;
@@ -30,20 +30,23 @@ class Photographers {
                     listTag += `<a class="tag" href="#"><span>#${tag}</span></a>`;
                 });
                 
-                headerContent.innerHTML = `
-                    <div class="top_content">
-                        <h1>${ph.name}</h1>
-                        <button onclick="app.openFormModal()">Contactez-moi</button>
+                bannerContent.innerHTML = `
+                    <div>
+                        <div class="top_content">
+                            <h1>${ph.name}</h1>
+                            <button onclick="app.openFormModal()">Contactez-moi</button>
+                        </div>
+                        <p class="location">${ph.city}, ${ph.country}</p>
+                        <p class="tagline">${ph.tagline}</p>
+                        <div class="tags">
+                            ${listTag}
+                        </div>
                     </div>
-                    <p class="location">${ph.city}, ${ph.country}</p>
-                    <p class="tagline">${ph.tagline}</p>
-                    <div class="tags">
-                        ${listTag}
-                    </div>
+                    <img src="./images/Photographers_ID_Photos/${ph.portrait}" />
                 `;
                 
-                profilePic.src = `./images/Photographers_ID_Photos/${ph.portrait}`;
-                this.header.append(headerContent, profilePic);
+                // profilePic.src = `./images/Photographers_ID_Photos/${ph.portrait}`;
+                this.main.prepend(bannerContent);
 
                 modalName.innerHTML = `${ph.name}`;
             }
@@ -71,11 +74,13 @@ class Photographers {
                 <img src="images/${this.gallery[i].photographerId}/${this.gallery[i].image}" onclick="lb.openLightbox(); lb.currentSlide(${i})">
                 <div class="card_text">
                     <p class="img_title">${this.gallery[i].title}</p>
-                    <p class="price">${this.gallery[i].price} €</p>
-                    <p>
-                        <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
-                        <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
-                    </p>
+                    <div class="price_likes">
+                        <p class="price">${this.gallery[i].price} €</p>
+                        <p>
+                            <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
+                            <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
+                        </p>
+                    </div>
                 </div>
                 `
             // si le fichier est une video
@@ -86,11 +91,13 @@ class Photographers {
                 </video>
                 <div class="card_text">
                     <p class="img_title">${this.gallery[i].title}</p>
-                    <p class="price">${this.gallery[i].price} €</p>
-                    <p>
-                        <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
-                        <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
-                    </p>
+                    <div class="price_likes">
+                        <p class="price">${this.gallery[i].price} €</p>
+                        <p>
+                            <span class="likes" id="like_${this.gallery[i].id}">${this.gallery[i].likes}</span> 
+                            <i class="fas fa-heart" onclick="app.addLike(${this.gallery[i].id})"></i>
+                        </p>
+                    </div>
                 </div>
             `
             }
