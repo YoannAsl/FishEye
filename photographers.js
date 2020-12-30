@@ -14,6 +14,51 @@ class Photographers {
         this.photographer = "";
     }
 
+    init() {
+        this.createBanner();
+        this.createImages();
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
+                this.closeFormModal();
+                lb.closeLightbox();
+            }
+            if (e.key === "ArrowLeft" && lb.prev.style.visibility == "visible") {
+                lb.changeSlide(-1);
+            }
+            if (e.key === "ArrowRight" && lb.next.style.visibility == "visible") {
+                lb.changeSlide(1);
+            }
+        });
+        
+        for (const option of document.querySelectorAll(".option")) {
+            option.addEventListener('click', function() {
+                if (!this.classList.contains('selected')) {
+                    this.parentNode.querySelector('.option.selected').classList.remove('selected');
+                    this.classList.add('selected');
+                    this.closest('.select').querySelector('.select_trigger span').textContent = this.textContent;
+                }
+                app.sortGallery();
+                lb.updateLightbox();
+            })
+        }
+
+        document.querySelector('.select_wrapper').addEventListener('click', function() {
+            this.querySelector('.select').classList.toggle('open');
+        });
+
+        window.addEventListener('click', function(e) {
+            const select = document.querySelector('.select')
+            if (!select.contains(e.target)) {
+                select.classList.remove('open');
+            }
+        });
+
+        document.querySelector("#submit_button").addEventListener("click", event => {
+            event.preventDefault();
+            console.log(document.querySelector("#prenom").value, document.querySelector("#nom").value, document.querySelector("#message").value)
+        });
+    }
+
     async createBanner() {
         const data = await this.ajax.getData();
         const photographers = data.photographers;
@@ -27,14 +72,14 @@ class Photographers {
 
                 let listTag = "" ;
                 ph.tags.map(tag => {
-                    listTag += `<a class="tag" href="#"><span>#${tag}</span></a>`;
+                    listTag += `<a class="tag" href="#"><span aria-label="tag">#${tag}</span></a>`;
                 });
                 
                 bannerContent.innerHTML = `
                     <div>
                         <div class="top_content">
                             <h1>${ph.name}</h1>
-                            <button onclick="app.openFormModal()">Contactez-moi</button>
+                            <button aria-label="Contact me" onclick="app.openFormModal()">Contactez-moi</button>
                         </div>
                         <p class="location">${ph.city}, ${ph.country}</p>
                         <p class="tagline">${ph.tagline}</p>
@@ -42,10 +87,9 @@ class Photographers {
                             ${listTag}
                         </div>
                     </div>
-                    <img src="./images/Photographers_ID_Photos/${ph.portrait}" />
+                    <img src="./images/Photographers_ID_Photos/${ph.portrait}" alt="" />
                 `;
                 
-                // profilePic.src = `./images/Photographers_ID_Photos/${ph.portrait}`;
                 this.main.prepend(bannerContent);
 
                 modalName.innerHTML = `${ph.name}`;
@@ -119,12 +163,7 @@ class Photographers {
                 });
                 break;
             case "Titre":
-                this.gallery.sort((a, b) => a.title.localeCompare(b.title))
-                // this.gallery.sort((a, b) => {
-                //     typeof a.image == "undefined" ? a = a.video : a = a.image;
-                //     typeof b.image == "undefined" ? b = b.video : b = b.image;
-                //     return a.localeCompare(b);
-                // });
+                this.gallery.sort((a, b) => a.title.localeCompare(b.title));
                 break;
         }
     }

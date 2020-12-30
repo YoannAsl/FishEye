@@ -18,13 +18,13 @@
         <p id="select_wrapper_label">Trier par</p>
         <div class="select_wrapper">
             <div class="select">
-                <div class="select_trigger"><span id="selector">Popularité</span>
+                <button class="select_trigger" aria-label="Order by" role="button" aria-haspopup="listbox" aria-expanded="false"><span id="selector">Popularité</span>
                     <div class="arrow"></div>
-                </div>
-                <ul class="options">
-                    <li class="option selected">Popularité</li>
-                    <li class="option">Date</li>
-                    <li class="option">Titre</li>
+                </button>
+                <ul class="options" role="listbox" aria-activedescendant="">
+                    <li class="option selected"><a>Popularité</a></li>
+                    <li class="option"><a>Date</a></li>
+                    <li class="option"><a>Titre</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +37,7 @@
         <div>
             <h1>Contactez-moi</h1>
             <i class="fas fa-times close" onclick="app.closeFormModal()"></i>
-            <h1 id="modal_name">Mimi Keel</h1>
+            <h1 id="modal_name"></h1>
             <form id="form1">
                 <label for="prenom">Prénom</label>
                 <input type="text" id="prenom" name="prenom" required>
@@ -67,49 +67,7 @@
     <script>
         const app = new Photographers;
         const lb = new Lightbox(app);
-        app.createBanner();
-        app.createImages();
-
-        document.addEventListener("keydown", e => {
-            if (e.key === "Escape") {
-                app.closeFormModal();
-                lb.closeLightbox();
-            }
-            if (e.key === "ArrowLeft" && lb.prev.style.visibility == "visible") {
-                lb.changeSlide(-1);
-            }
-            if (e.key === "ArrowRight" && lb.next.style.visibility == "visible") {
-                lb.changeSlide(1);
-            }
-        });
-        
-        for (const option of document.querySelectorAll(".option")) {
-            option.addEventListener('click', function() {
-                if (!this.classList.contains('selected')) {
-                    this.parentNode.querySelector('.option.selected').classList.remove('selected');
-                    this.classList.add('selected');
-                    this.closest('.select').querySelector('.select_trigger span').textContent = this.textContent;
-                }
-                app.sortGallery();
-                lb.updateLightbox();
-            })
-        };
-
-        document.querySelector('.select_wrapper').addEventListener('click', function() {
-            this.querySelector('.select').classList.toggle('open');
-        });
-
-        window.addEventListener('click', function(e) {
-            const select = document.querySelector('.select')
-            if (!select.contains(e.target)) {
-                select.classList.remove('open');
-            }
-        });
-
-        document.querySelector("#submit_button").addEventListener("click", event => {
-            event.preventDefault();
-            console.log(document.querySelector("#prenom").value, document.querySelector("#nom").value, document.querySelector("#message").value)
-        });
+        app.init();
     </script>
 </body>
 </html>
