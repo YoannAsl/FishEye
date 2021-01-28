@@ -23,10 +23,16 @@ class Photographers {
 				this.closeFormModal();
 				lb.closeLightbox();
 			}
-			if (e.key === 'ArrowLeft' && lb.prev.style.visibility == 'visible') {
+			if (
+				e.key === 'ArrowLeft' &&
+				document.querySelector('.prev').style.visibility == 'visible'
+			) {
 				lb.changeSlide(-1);
 			}
-			if (e.key === 'ArrowRight' && lb.next.style.visibility == 'visible') {
+			if (
+				e.key === 'ArrowRight' &&
+				document.querySelector('.next').style.visibility == 'visible'
+			) {
 				lb.changeSlide(1);
 			}
 		});

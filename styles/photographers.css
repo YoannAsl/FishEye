@@ -35,7 +35,7 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 50px;
   margin-top: 40px;
 }
@@ -82,7 +82,7 @@ header {
 
 .banner > div .tag {
   color: #901C1C;
-  border: 0.5px solid #C4C4C4;
+  border: 0.5px solid #c4c4c4;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 20px;
@@ -113,7 +113,9 @@ label {
   font-weight: bold;
 }
 
-button, select, option {
+button,
+select,
+option {
   font-family: inherit;
   width: 170px;
   height: 69px;
@@ -179,8 +181,9 @@ button, select, option {
   width: 15px;
 }
 
-.select_wrapper .select_trigger .arrow::before, .select_wrapper .select_trigger .arrow::after {
-  content: "";
+.select_wrapper .select_trigger .arrow::before,
+.select_wrapper .select_trigger .arrow::after {
+  content: '';
   position: absolute;
   bottom: 0px;
   width: 0.15rem;
@@ -264,7 +267,8 @@ button, select, option {
   grid-row-gap: 3%;
 }
 
-.cards_container img, .cards_container video {
+.cards_container img,
+.cards_container video {
   width: 100%;
   height: 350px;
   -o-object-fit: cover;
@@ -317,7 +321,7 @@ button, select, option {
 .modal div {
   width: 46%;
   margin: 5% auto;
-  background-color: #DB8876;
+  background-color: #db8876;
   border-radius: 5px;
   padding: 2%;
   position: relative;
@@ -350,14 +354,15 @@ button, select, option {
 .modal div form * {
   font-size: 36px;
   font-weight: normal;
-  color: #312E2E;
+  color: #312e2e;
 }
 
 .modal div form input {
   height: 68px;
 }
 
-.modal div form input, .modal div form textarea {
+.modal div form input,
+.modal div form textarea {
   border: none;
   border-radius: 5px;
 }
@@ -379,36 +384,25 @@ button, select, option {
   border: none;
 }
 
-.lightbox .close, .lightbox .next, .lightbox .prev {
+.lightbox .close,
+.lightbox .next,
+.lightbox .prev {
   font-size: 70px;
   color: #901C1C;
   position: absolute;
 }
 
-.lightbox .next {
-  top: 48%;
-  right: 170px;
-}
-
-.lightbox .prev {
-  top: 48%;
-  left: 170px;
-}
-
-.lightbox .close {
-  right: 170px;
-  top: 2%;
-}
-
 .lightbox .lightbox_content {
   margin: auto;
+  position: relative;
 }
 
 .lightbox .lightbox_content .lightboxCard {
   display: none;
 }
 
-.lightbox .lightbox_content .lightboxCard img, .lightbox .lightbox_content .lightboxCard video {
+.lightbox .lightbox_content .lightboxCard img,
+.lightbox .lightbox_content .lightboxCard video {
   height: 900px;
   width: 1000px;
   border-radius: 5px;
@@ -420,14 +414,19 @@ button, select, option {
   color: #901C1C;
 }
 
-.lightbox .prev {
-  color: #901C1C;
-  font-size: 70px;
+.lightbox .lightbox_content .next {
+  top: 48%;
+  right: -8%;
 }
 
-.lightbox .next {
-  color: #901C1C;
-  font-size: 70px;
+.lightbox .lightbox_content .prev {
+  top: 48%;
+  left: -8%;
+}
+
+.lightbox .lightbox_content .close {
+  top: 2%;
+  right: -8%;
 }
 
 .bottom_div {
@@ -491,7 +490,8 @@ button, select, option {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  .banner > div .tag, .banner > div .location {
+  .banner > div .tag,
+  .banner > div .location {
     font-size: 13px;
     margin-bottom: 5px;
   }
@@ -499,7 +499,8 @@ button, select, option {
     width: 100px;
     height: 100px;
   }
-  .select_wrapper, #select_wrapper_label {
+  .select_wrapper,
+  #select_wrapper_label {
     display: none;
   }
   .cards_container {
@@ -511,7 +512,8 @@ button, select, option {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .cards_container img, .cards_container video {
+  .cards_container img,
+  .cards_container video {
     width: 100%;
     height: 190px;
   }
@@ -559,24 +561,15 @@ button, select, option {
   .lightbox {
     background-color: white;
   }
-  .lightbox .lightbox_content .lightboxCard img, .lightbox .lightbox_content .lightboxCard video {
+  .lightbox .lightbox_content .lightboxCard img,
+  .lightbox .lightbox_content .lightboxCard video {
     height: 250px;
     width: 290px;
   }
-  .lightbox .close, .lightbox .next, .lightbox .prev {
-    font-size: 20px;
-  }
-  .lightbox .next {
-    top: 48%;
-    right: 20px;
-  }
+  .lightbox .close,
+  .lightbox .next,
   .lightbox .prev {
-    top: 48%;
-    left: 20px;
-  }
-  .lightbox .close {
-    right: 20px;
-    top: 33%;
+    font-size: 20px;
   }
   .bottom_div {
     display: none;
