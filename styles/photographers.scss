@@ -371,6 +371,20 @@ option {
 	font-weight: 500;
 }
 
+@media (max-width: 350px) {
+	.lightbox {
+		.lightbox_content {
+			.lightboxCard {
+				img,
+				video {
+					height: 200px;
+					width: 240px;
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 961px) {
 	body {
 		padding: 0 20px;
@@ -491,18 +505,6 @@ option {
 		.prev {
 			font-size: 20px;
 		}
-		// .next {
-		//     top: 48%;
-		//     right: 20px;
-		// }
-		// .prev {
-		//     top: 48%;
-		//     left: 20px;
-		// }
-		// .close {
-		//     right: 20px;
-		//     top: 33%;
-		// }
 	}
 	.bottom_div {
 		display: none;
