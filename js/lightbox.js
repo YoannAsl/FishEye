@@ -10,23 +10,23 @@ class Lightbox {
 	}
 
 	updateLightbox() {
-		this.lightboxContent.innerHTML = `<i class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)"></i>
-        <i class="fas fa-times close" onclick="lb.closeLightbox()"></i>
-        <i class="fas fa-chevron-right next" onclick="lb.changeSlide(1)"></i>`;
+		this.lightboxContent.innerHTML = `<i class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)" aria-label="Previous image"></i>
+        <i class="fas fa-times close" onclick="lb.closeLightbox()" aria-label="Close dialog"></i>
+        <i class="fas fa-chevron-right next" onclick="lb.changeSlide(1)" aria-label="Next image"></i>`;
 		for (let i = 0; i < this.app.gallery.length; i++) {
 			const newLightboxCard = document.createElement('div');
 			newLightboxCard.className = 'lightboxCard';
 			// si le fichier est une image
 			if (this.app.gallery[i].image) {
 				newLightboxCard.innerHTML = `
-                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}">
+                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].title}">
                     <p class="img_title">${this.app.gallery[i].title}</p>
                 `;
 				// si le fichier est une video
 			} else if (this.app.gallery[i].video) {
 				newLightboxCard.innerHTML = `
                     <video controls>
-                        <source src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4">
+                        <source src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4" alt="${this.app.gallery[i].title}">
                     </video>
                     <p class="img_title">${this.app.gallery[i].title}</p>
                 `;

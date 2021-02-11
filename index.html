@@ -1,43 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Accueil</title>
-</head>
-<body>
-    <header>
-        <div id="test">
-            <a href="index.html"><img id="logo" src="logo.svg" alt="Fisheye Home page"></a>
-            <h1>Nos photographes</h1>
-        </div>
-        
-        <nav>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Portrait</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Art</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Fashion</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Architecture</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Travel</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Sport</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Animals</span></a>
-            <a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="tag">Events</span></a>
-        </nav>
-    </header>
-    <main id="main">
-        <section class="cards_container">
-        </section>
-    </main>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./styles/index.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<title>Accueil</title>
+	</head>
+	<body>
+		<header>
+			<div id="test">
+				<a href="index.html"
+					><img id="logo" src="logo.svg" alt="Fisheye Home page"
+				/></a>
+				<h1>Nos photographes</h1>
+			</div>
 
-    <a id="linktomain" href="#main">Passer au contenu</a>
+			<nav>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Portrait</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Art</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Fashion</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Architecture</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Travel</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Sport</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Animals</span></a
+				>
+				<a
+					class="tag"
+					href="#"
+					onclick="index.updatePhList(this.children[0].innerHTML)"
+					>#<span aria-label="tag">Events</span></a
+				>
+			</nav>
+		</header>
+		<main id="main">
+			<section class="cards_container"></section>
+		</main>
 
-    <script src="./ajax.js"></script>
-    <script src="./index.js"></script>
-    <script>
-        const index = new Index;
-        index.init();
-    </script>
-</body>
+		<a id="linktomain" href="#main">Passer au contenu</a>
+
+		<script src="./js/ajax.js"></script>
+		<script src="./js/index.js"></script>
+		<script>
+			const index = new Index();
+			index.init();
+		</script>
+	</body>
 </html>

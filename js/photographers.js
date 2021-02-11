@@ -47,9 +47,33 @@ class Photographers {
 					this.closest('.select').querySelector(
 						'.select_trigger span'
 					).textContent = this.textContent;
+					document
+						.querySelector('.options')
+						.setAttribute('aria-activedescendant', this.textContent);
 				}
 				app.sortGallery();
 				lb.updateLightbox();
+			});
+		}
+
+		for (const option of document.querySelectorAll('.option')) {
+			option.addEventListener('keydown', function (e) {
+				if (e.key === 'Enter') {
+					if (!this.classList.contains('selected')) {
+						this.parentNode
+							.querySelector('.option.selected')
+							.classList.remove('selected');
+						this.classList.add('selected');
+						this.closest('.select').querySelector(
+							'.select_trigger span'
+						).textContent = this.textContent;
+						document
+							.querySelector('.options')
+							.setAttribute('aria-activedescendant', this.textContent);
+					}
+					app.sortGallery();
+					lb.updateLightbox();
+				}
 			});
 		}
 
@@ -57,6 +81,17 @@ class Photographers {
 			.querySelector('.select_wrapper')
 			.addEventListener('click', function () {
 				this.querySelector('.select').classList.toggle('open');
+				if (this.querySelector('.select').classList.contains('open')) {
+					this.querySelector('.select_trigger').setAttribute(
+						'aria-expanded',
+						true
+					);
+				} else {
+					this.querySelector('.select_trigger').setAttribute(
+						'aria-expanded',
+						false
+					);
+				}
 			});
 
 		window.addEventListener('click', function (e) {
@@ -161,7 +196,7 @@ class Photographers {
 				});
 				break;
 			case 'Titre':
-				this.gallery.sort((a, b) => a.title.localeCompare(b.title));
+				this.gallery.sort((a, b) => a.alt.localeCompare(b.alt));
 				break;
 		}
 	}

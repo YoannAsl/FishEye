@@ -25,24 +25,30 @@
 		</header>
 
 		<main>
-			<p id="select_wrapper_label">Trier par</p>
-			<div class="select_wrapper">
-				<div class="select">
-					<button
-						class="select_trigger"
-						aria-label="Order by"
-						role="button"
-						aria-haspopup="listbox"
-						aria-expanded="false"
-					>
-						<span id="selector">Popularité</span>
-						<div class="arrow"></div>
-					</button>
-					<ul class="options" role="listbox" aria-activedescendant="">
-						<li class="option selected"><a>Popularité</a></li>
-						<li class="option"><a>Date</a></li>
-						<li class="option"><a>Titre</a></li>
-					</ul>
+			<div id="select-container">
+				<p id="select_wrapper_label">Trier par</p>
+				<div class="select_wrapper">
+					<div class="select">
+						<button
+							class="select_trigger"
+							aria-label="Order by"
+							role="button"
+							aria-haspopup="listbox"
+							aria-expanded="false"
+						>
+							<span id="selector">Popularité</span>
+							<i class="fas fa-chevron-down arrow"></i>
+						</button>
+						<ul
+							class="options"
+							role="listbox"
+							aria-activedescendant="Popularité"
+						>
+							<li class="option selected" tabindex="0"><a>Popularité</a></li>
+							<li class="option" tabindex="0"><a>Date</a></li>
+							<li class="option" tabindex="0"><a>Titre</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 
@@ -52,7 +58,11 @@
 		<dialog class="modal">
 			<div>
 				<h1>Contactez-moi</h1>
-				<i class="fas fa-times close" onclick="app.closeFormModal()"></i>
+				<i
+					class="fas fa-times close"
+					onclick="app.closeFormModal()"
+					tabindex="0"
+				></i>
 				<h1 id="modal_name"></h1>
 				<form id="form1">
 					<label for="prenom">Prénom</label>
@@ -70,11 +80,8 @@
 			</div>
 		</dialog>
 
-		<div class="lightbox">
-			<!-- <i class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)"></i> -->
+		<div class="lightbox" aria-label="image closeup view">
 			<div class="lightbox_content"></div>
-			<!-- <i class="fas fa-times close" onclick="lb.closeLightbox()"></i> -->
-			<!-- <i class="fas fa-chevron-right next" onclick="lb.changeSlide(1)"></i> -->
 		</div>
 
 		<div class="bottom_div"></div>

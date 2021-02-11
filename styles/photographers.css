@@ -127,6 +127,22 @@ option {
   font-size: 18px;
 }
 
+#select-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+}
+
+#select-container p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 25px;
+}
+
 .select_wrapper {
   position: relative;
   -webkit-user-select: none;
@@ -181,31 +197,6 @@ option {
   width: 15px;
 }
 
-.select_wrapper .select_trigger .arrow::before,
-.select_wrapper .select_trigger .arrow::after {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  width: 0.15rem;
-  height: 100%;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.select_wrapper .select_trigger .arrow::before {
-  left: -5px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  background-color: white;
-}
-
-.select_wrapper .select_trigger .arrow::after {
-  left: 5px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  background-color: white;
-}
-
 .select_wrapper .options {
   position: absolute;
   display: block;
@@ -246,16 +237,9 @@ option {
   background-color: #D3573C;
 }
 
-.select_wrapper .open .arrow::before {
-  left: -5px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.select_wrapper .open .arrow::after {
-  left: 5px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+.select_wrapper .open .arrow {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .cards_container {
@@ -265,6 +249,7 @@ option {
       grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 6%;
   grid-row-gap: 3%;
+  margin-top: 30px;
 }
 
 .cards_container img,
@@ -320,7 +305,7 @@ option {
 
 .modal div {
   width: 46%;
-  margin: 5% auto;
+  margin: 3% auto;
   background-color: #db8876;
   border-radius: 5px;
   padding: 2%;
@@ -370,6 +355,7 @@ option {
 .modal div form button {
   font-size: 18px;
   color: white;
+  margin-top: 25px;
 }
 
 .lightbox {
@@ -412,6 +398,7 @@ option {
 
 .lightbox .lightbox_content .lightboxCard .img_title {
   color: #901C1C;
+  font-size: 24px;
 }
 
 .lightbox .lightbox_content .next {

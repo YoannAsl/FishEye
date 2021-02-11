@@ -38,7 +38,6 @@ header {
 		.top_content {
 			display: flex;
 			align-items: center;
-			// justify-content: space-between;
 			h1 {
 				color: $primary_light;
 				font-size: 64px;
@@ -108,6 +107,17 @@ option {
 	font-size: 18px;
 }
 
+#select-container {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+	p {
+		font-size: 18px;
+		font-weight: bold;
+		margin-right: 25px;
+	}
+}
+
 .select_wrapper {
 	position: relative;
 	user-select: none;
@@ -137,31 +147,10 @@ option {
 		cursor: pointer;
 		border: none;
 		border-radius: 5px;
-		// background-color: $primary_dark;
-		// color: white;
 		.arrow {
 			position: relative;
 			height: 15px;
 			width: 15px;
-		}
-		.arrow::before,
-		.arrow::after {
-			content: '';
-			position: absolute;
-			bottom: 0px;
-			width: 0.15rem;
-			height: 100%;
-			transition: all 0.5s;
-		}
-		.arrow::before {
-			left: -5px;
-			transform: rotate(-45deg);
-			background-color: white;
-		}
-		.arrow::after {
-			left: 5px;
-			transform: rotate(45deg);
-			background-color: white;
 		}
 	}
 	.options {
@@ -173,10 +162,7 @@ option {
 		border: none;
 		background: $primary_dark;
 		border-radius: 5px;
-		// transition: all 0.5s;
-		// opacity: 0;
 		visibility: hidden;
-		// pointer-events: none;
 		z-index: 1;
 	}
 	.select.open .options {
@@ -188,14 +174,11 @@ option {
 		position: relative;
 		display: block;
 		padding: 0 22px;
-		// padding: 0 22px 0 22px;
 		font-size: 18px;
-		// font-weight: 300;
 		color: white;
 		line-height: 60px;
 		cursor: pointer;
 		border-radius: 5px;
-		// transition: all 0.5s;
 	}
 	.option:hover {
 		cursor: pointer;
@@ -205,13 +188,8 @@ option {
 		color: black;
 		background-color: $primary_light;
 	}
-	.open .arrow::before {
-		left: -5px;
-		transform: rotate(45deg);
-	}
-	.open .arrow::after {
-		left: 5px;
-		transform: rotate(-45deg);
+	.open .arrow {
+		transform: rotate(180deg);
 	}
 }
 
@@ -220,16 +198,11 @@ option {
 	grid-template-columns: repeat(3, 1fr);
 	grid-column-gap: 6%;
 	grid-row-gap: 3%;
-
-	// display: flex;
-	// flex-wrap: wrap;
-	// justify-content: space-between;
+	margin-top: 30px;
 	img,
 	video {
 		width: 100%;
 		height: 350px;
-		// width: 350px;
-		// height: 300px;
 		object-fit: cover;
 		border-radius: 5px;
 	}
@@ -265,7 +238,7 @@ option {
 	padding: 0;
 	div {
 		width: 46%;
-		margin: 5% auto;
+		margin: 3% auto;
 		background-color: #db8876;
 		border-radius: 5px;
 		padding: 2%;
@@ -301,6 +274,7 @@ option {
 			button {
 				font-size: 18px;
 				color: white;
+				margin-top: 25px;
 			}
 		}
 	}
@@ -337,6 +311,7 @@ option {
 			}
 			.img_title {
 				color: $primary_dark;
+				font-size: 24px;
 			}
 		}
 		.next {
