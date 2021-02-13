@@ -21,7 +21,7 @@ class Index {
 		this.phList.forEach((e) => {
 			let listTag = '';
 			e.tags.map((e) => {
-				listTag += `<a class="tag ${e}" href="#"><span aria-label="tag">#${e}</span></a>`;
+				listTag += `<a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="${e}">${e}</span></a>`;
 			});
 
 			const newCard = document.createElement('div');

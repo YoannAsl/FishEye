@@ -347,6 +347,12 @@ option {
 }
 
 @media (max-width: 350px) {
+	.banner {
+		.tagline,
+		.tags {
+			width: 150%;
+		}
+	}
 	.lightbox {
 		.lightbox_content {
 			.lightboxCard {
@@ -433,8 +439,6 @@ option {
 			margin: 0;
 			h1 {
 				font-size: 36px;
-			}
-			#modal_name {
 				margin-bottom: 12px;
 			}
 			.close {

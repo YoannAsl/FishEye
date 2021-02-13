@@ -55,15 +55,17 @@
 			<section class="cards_container"></section>
 		</main>
 
-		<dialog class="modal">
+		<dialog class="modal" aria-labelledby="modal_title">
 			<div>
-				<h1>Contactez-moi</h1>
+				<h1 id="modal_title">
+					Contactez-moi<br /><span id="modal_name"></span>
+				</h1>
 				<i
 					class="fas fa-times close"
 					onclick="app.closeFormModal()"
 					tabindex="0"
+					aria-label="Close Contact form"
 				></i>
-				<h1 id="modal_name"></h1>
 				<form id="form1">
 					<label for="prenom">Prénom</label>
 					<input type="text" id="prenom" name="prenom" required />

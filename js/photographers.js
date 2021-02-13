@@ -58,7 +58,8 @@ class Photographers {
 
 		for (const option of document.querySelectorAll('.option')) {
 			option.addEventListener('keydown', function (e) {
-				if (e.key === 'Enter') {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
 					if (!this.classList.contains('selected')) {
 						this.parentNode
 							.querySelector('.option.selected')
@@ -71,6 +72,7 @@ class Photographers {
 							.querySelector('.options')
 							.setAttribute('aria-activedescendant', this.textContent);
 					}
+					document.querySelector('.select').classList.remove('open');
 					app.sortGallery();
 					lb.updateLightbox();
 				}
@@ -111,6 +113,12 @@ class Photographers {
 					document.querySelector('#message').value
 				);
 			});
+
+		document.querySelector('.close').addEventListener('keydown', (e) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				this.closeFormModal();
+			}
+		});
 	}
 
 	async createBanner() {
@@ -169,7 +177,7 @@ class Photographers {
 			// si le fichier est une image
 			if (this.gallery[i].image) {
 				this.factory
-					.createMedia('image')
+					.createMedia('image', this.gallery[i])
 					.createHTML(newCard, this.gallery[i], i);
 
 				// si le fichier est une video
@@ -179,6 +187,15 @@ class Photographers {
 					.createHTML(newCard, this.gallery[i], i);
 			}
 			this.cardsContainer.append(newCard);
+
+			document
+				.querySelector(`#like_icon_${this.gallery[i].id}`)
+				.addEventListener('keydown', (e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						this.addLike(this.gallery[i].id);
+					}
+				});
 		}
 	}
 
@@ -214,7 +231,7 @@ class Photographers {
 			totalLikes += l.likes;
 		});
 		this.bottomDiv.innerHTML = `
-            <p><span id="totalLikes">${totalLikes}</span> <i class="fas fa-heart""></i></p>
+            <p><span id="totalLikes">${totalLikes}</span> <i class="fas fa-heart"></i></p>
             <p>${this.photographer.price}€ / jour</p>
         `;
 	}
@@ -231,6 +248,15 @@ class Photographers {
 
 	openFormModal() {
 		this.modal.style.display = 'block';
+		document.querySelector('#prenom').focus();
+		document
+			.querySelector('#submit_button')
+			.addEventListener('keydown', (e) => {
+				if (e.key === 'Tab') {
+					e.preventDefault();
+					document.querySelector('.close').focus();
+				}
+			});
 	}
 
 	closeFormModal() {

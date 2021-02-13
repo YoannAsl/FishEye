@@ -440,6 +440,10 @@ option {
 }
 
 @media (max-width: 350px) {
+  .banner .tagline,
+  .banner .tags {
+    width: 150%;
+  }
   .lightbox .lightbox_content .lightboxCard img,
   .lightbox .lightbox_content .lightboxCard video {
     height: 200px;
@@ -526,8 +530,6 @@ option {
   }
   .modal div h1 {
     font-size: 36px;
-  }
-  .modal div #modal_name {
     margin-bottom: 12px;
   }
   .modal div .close {

@@ -5,30 +5,28 @@ class Lightbox {
 		this.lightboxContent = document.querySelector('.lightbox_content');
 		this.slideIndex = '';
 		this.slides = document.getElementsByClassName('lightboxCard');
-		// this.prev = document.querySelector('.prev');
-		// this.next = document.querySelector('.next');
 	}
 
 	updateLightbox() {
-		this.lightboxContent.innerHTML = `<i class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)" aria-label="Previous image"></i>
-        <i class="fas fa-times close" onclick="lb.closeLightbox()" aria-label="Close dialog"></i>
-        <i class="fas fa-chevron-right next" onclick="lb.changeSlide(1)" aria-label="Next image"></i>`;
+		this.lightboxContent.innerHTML = `<a><i class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)" aria-label="Previous image"></i></a>
+        <a><i class="fas fa-times close" onclick="lb.closeLightbox()" aria-label="Close dialog"></i></a>
+        <a><i class="fas fa-chevron-right next" onclick="lb.changeSlide(1)" aria-label="Next image"></i></a>`;
 		for (let i = 0; i < this.app.gallery.length; i++) {
 			const newLightboxCard = document.createElement('div');
 			newLightboxCard.className = 'lightboxCard';
 			// si le fichier est une image
 			if (this.app.gallery[i].image) {
 				newLightboxCard.innerHTML = `
-                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].title}">
-                    <p class="img_title">${this.app.gallery[i].title}</p>
+                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].alt}">
+                    <p class="img_title">${this.app.gallery[i].alt}</p>
                 `;
 				// si le fichier est une video
 			} else if (this.app.gallery[i].video) {
 				newLightboxCard.innerHTML = `
                     <video controls>
-                        <source src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4" alt="${this.app.gallery[i].title}">
+                        <source src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4" alt="${this.app.gallery[i].alt}">
                     </video>
-                    <p class="img_title">${this.app.gallery[i].title}</p>
+                    <p class="img_title">${this.app.gallery[i].alt}</p>
                 `;
 			}
 			this.lightboxContent.append(newLightboxCard);
