@@ -12,7 +12,7 @@ a {
 
 .tag {
   color: #901C1C;
-  border: 0.5px solid #C4C4C4;
+  border: 0.5px solid #c4c4c4;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 11px;
@@ -44,7 +44,7 @@ header {
   padding-left: 9%;
 }
 
-header #test h1 {
+header div h1 {
   position: absolute;
   top: 44px;
   right: 120px;
@@ -57,8 +57,8 @@ header #test h1 {
 .cards_container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 3%;
   grid-row-gap: 6%;
   padding: 0 2%;
@@ -73,6 +73,7 @@ header #test h1 {
   color: #D3573C;
   font-size: 36px;
   margin: 0;
+  font-weight: normal;
 }
 
 .cards_container .card p {
@@ -107,7 +108,7 @@ header #test h1 {
 #linktomain {
   display: none;
   text-decoration: none;
-  background: #DB8876;
+  background: #db8876;
   font-size: 18px;
   font-weight: bold;
   border-radius: 5px;
@@ -141,7 +142,7 @@ header #test h1 {
             box-sizing: border-box;
     margin-bottom: 25px;
   }
-  header #test {
+  header div {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -154,10 +155,10 @@ header #test h1 {
             align-items: center;
     margin-bottom: 30px;
   }
-  header #test #logo {
+  header div #logo {
     width: 150px;
   }
-  header #test h1 {
+  header div h1 {
     position: initial;
     font-size: 14px;
   }

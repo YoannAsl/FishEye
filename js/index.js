@@ -26,7 +26,7 @@ class Index {
 
 			const newCard = document.createElement('div');
 
-			let url = './photographer.html';
+			let url = '/photographer.html';
 			url = url + '?id=' + e.id;
 
 			newCard.className = 'card';

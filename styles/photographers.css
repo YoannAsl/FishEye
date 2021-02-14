@@ -58,6 +58,7 @@ header {
   font-size: 64px;
   margin: 0;
   margin-right: 15%;
+  font-weight: normal;
 }
 
 .banner > div .top_content button {
@@ -227,14 +228,14 @@ option {
   border-radius: 5px;
 }
 
-.select_wrapper .option:hover {
+.select_wrapper .option:hover,
+.select_wrapper .option:focus {
   cursor: pointer;
   background-color: #b2b2b2;
 }
 
 .select_wrapper .option.selected {
-  color: black;
-  background-color: #D3573C;
+  display: none;
 }
 
 .select_wrapper .open .arrow {
@@ -245,8 +246,8 @@ option {
 .cards_container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 6%;
   grid-row-gap: 3%;
   margin-top: 30px;
@@ -305,7 +306,7 @@ option {
 
 .modal div {
   width: 46%;
-  margin: 3% auto;
+  margin: 2% auto;
   background-color: #db8876;
   border-radius: 5px;
   padding: 2%;

@@ -43,6 +43,7 @@ header {
 				font-size: 64px;
 				margin: 0;
 				margin-right: 15%;
+				font-weight: normal;
 			}
 			button {
 				font-size: 20px;
@@ -180,13 +181,13 @@ option {
 		cursor: pointer;
 		border-radius: 5px;
 	}
-	.option:hover {
+	.option:hover,
+	.option:focus {
 		cursor: pointer;
 		background-color: #b2b2b2;
 	}
 	.option.selected {
-		color: black;
-		background-color: $primary_light;
+		display: none;
 	}
 	.open .arrow {
 		transform: rotate(180deg);
@@ -195,7 +196,7 @@ option {
 
 .cards_container {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 6%;
 	grid-row-gap: 3%;
 	margin-top: 30px;
@@ -238,7 +239,7 @@ option {
 	padding: 0;
 	div {
 		width: 46%;
-		margin: 3% auto;
+		margin: 2% auto;
 		background-color: #db8876;
 		border-radius: 5px;
 		padding: 2%;

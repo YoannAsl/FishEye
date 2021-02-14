@@ -1,5 +1,9 @@
 class Photographers {
 	constructor() {
+		this.queryString = window.location.search;
+		this.urlParams = new URLSearchParams(this.queryString);
+		this.id = this.urlParams.get('id');
+
 		this.gallery = [];
 		this.ajax = new Ajax();
 		this.factory = new MediaFactory();
@@ -7,9 +11,6 @@ class Photographers {
 		this.cardsContainer = document.querySelector('.cards_container');
 		this.modal = document.querySelector('.modal');
 		this.likesCount = document.getElementsByClassName('.likes');
-		this.queryString = window.location.search;
-		this.urlParams = new URLSearchParams(this.queryString);
-		this.id = this.urlParams.get('id');
 		this.selector = document.querySelector('#selector');
 		this.bottomDiv = document.querySelector('.bottom_div');
 		this.photographer = '';
@@ -116,9 +117,19 @@ class Photographers {
 
 		document.querySelector('.close').addEventListener('keydown', (e) => {
 			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
 				this.closeFormModal();
 			}
 		});
+
+		document
+			.querySelector('#submit_button')
+			.addEventListener('keydown', (e) => {
+				if (e.key === 'Tab') {
+					e.preventDefault();
+					document.querySelector('.close').focus();
+				}
+			});
 	}
 
 	async createBanner() {
@@ -133,7 +144,7 @@ class Photographers {
 				bannerContent.className = 'banner';
 
 				ph.tags.map((tag) => {
-					listTag += `<a class="tag" href="#"><span aria-label="tag">#${tag}</span></a>`;
+					listTag += `<a class="tag" href="#">#<span aria-label="${tag}">${tag}</span></a>`;
 				});
 
 				bannerContent.innerHTML = `
@@ -249,14 +260,6 @@ class Photographers {
 	openFormModal() {
 		this.modal.style.display = 'block';
 		document.querySelector('#prenom').focus();
-		document
-			.querySelector('#submit_button')
-			.addEventListener('keydown', (e) => {
-				if (e.key === 'Tab') {
-					e.preventDefault();
-					document.querySelector('.close').focus();
-				}
-			});
 	}
 
 	closeFormModal() {
