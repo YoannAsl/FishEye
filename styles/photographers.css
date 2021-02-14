@@ -151,26 +151,9 @@ option {
       -ms-user-select: none;
           user-select: none;
   width: 170px;
-  height: 69px;
-  border: none;
-  border-radius: 5px;
   background-color: #901C1C;
   color: white;
-}
-
-.select_wrapper .select {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border: none;
   border-radius: 5px;
-  background-color: #901C1C;
-  color: white;
 }
 
 .select_wrapper .select_trigger {
@@ -186,10 +169,7 @@ option {
           justify-content: space-between;
   padding: 0 22px;
   font-size: 18px;
-  height: 69px;
   cursor: pointer;
-  border: none;
-  border-radius: 5px;
 }
 
 .select_wrapper .select_trigger .arrow {
@@ -206,15 +186,10 @@ option {
   right: 0;
   border: none;
   background: #901C1C;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   visibility: hidden;
   z-index: 1;
-}
-
-.select_wrapper .select.open .options {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
 }
 
 .select_wrapper .option {
@@ -225,12 +200,15 @@ option {
   color: white;
   line-height: 60px;
   cursor: pointer;
-  border-radius: 5px;
+}
+
+.select_wrapper .option:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .select_wrapper .option:hover,
 .select_wrapper .option:focus {
-  cursor: pointer;
   background-color: #b2b2b2;
 }
 
@@ -238,9 +216,24 @@ option {
   display: none;
 }
 
+.select_wrapper .open .options {
+  visibility: visible;
+  pointer-events: all;
+}
+
+.select_wrapper .open .select_trigger {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .select_wrapper .open .arrow {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.select_wrapper .open .option:nth-child(2) {
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
 }
 
 .cards_container {
@@ -369,6 +362,7 @@ option {
   top: 0;
   background-color: rgba(196, 196, 196, 0.6);
   border: none;
+  padding: 0;
 }
 
 .lightbox .close,

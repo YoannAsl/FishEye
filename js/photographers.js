@@ -60,7 +60,6 @@ class Photographers {
 		for (const option of document.querySelectorAll('.option')) {
 			option.addEventListener('keydown', function (e) {
 				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
 					if (!this.classList.contains('selected')) {
 						this.parentNode
 							.querySelector('.option.selected')
@@ -73,7 +72,6 @@ class Photographers {
 							.querySelector('.options')
 							.setAttribute('aria-activedescendant', this.textContent);
 					}
-					document.querySelector('.select').classList.remove('open');
 					app.sortGallery();
 					lb.updateLightbox();
 				}
@@ -104,16 +102,14 @@ class Photographers {
 			}
 		});
 
-		document
-			.querySelector('#submit_button')
-			.addEventListener('click', (event) => {
-				event.preventDefault();
-				console.log(
-					document.querySelector('#prenom').value,
-					document.querySelector('#nom').value,
-					document.querySelector('#message').value
-				);
-			});
+		document.querySelector('#submit_button').addEventListener('click', (e) => {
+			e.preventDefault();
+			console.log(
+				document.querySelector('#prenom').value,
+				document.querySelector('#nom').value,
+				document.querySelector('#message').value
+			);
+		});
 
 		document.querySelector('.close').addEventListener('keydown', (e) => {
 			if (e.key === 'Enter' || e.key === ' ') {
@@ -220,6 +216,7 @@ class Photographers {
 				break;
 			case 'Date':
 				this.gallery.sort((a, b) => {
+					// b avant a = plus récente a plus ancienne
 					return new Date(b.date) - new Date(a.date);
 				});
 				break;

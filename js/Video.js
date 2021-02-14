@@ -11,7 +11,7 @@ class Video {
 					<p class="price">${element.price} €</p>
 					<p>
 						<span class="likes" id="like_${element.id}">${element.likes}</span> 
-						<i class="fas fa-heart" id="like_icon_${element.id}" onclick="app.addLike(${element.id})" aria-label="likes" tabindex="0"></i>
+						<span><i class="fas fa-heart" id="like_icon_${element.id}" onclick="app.addLike(${element.id})" aria-label="likes" tabindex="0"></i></span>
 					</p>
 				</div>
 			</div>

@@ -123,20 +123,18 @@ option {
 	position: relative;
 	user-select: none;
 	width: 170px;
-	height: 69px;
-	border: none;
-	border-radius: 5px;
 	background-color: $primary_dark;
 	color: white;
-	.select {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		border: none;
-		border-radius: 5px;
-		background-color: $primary_dark;
-		color: white;
-	}
+	border-radius: 5px;
+	// .select {
+	// 	position: relative;
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	border: none;
+	// 	border-radius: 5px;
+	// 	background-color: $primary_dark;
+	// 	color: white;
+	// }
 	.select_trigger {
 		position: relative;
 		display: flex;
@@ -144,10 +142,7 @@ option {
 		justify-content: space-between;
 		padding: 0 22px;
 		font-size: 18px;
-		height: 69px;
 		cursor: pointer;
-		border: none;
-		border-radius: 5px;
 		.arrow {
 			position: relative;
 			height: 15px;
@@ -162,14 +157,10 @@ option {
 		right: 0;
 		border: none;
 		background: $primary_dark;
-		border-radius: 5px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
 		visibility: hidden;
 		z-index: 1;
-	}
-	.select.open .options {
-		opacity: 1;
-		visibility: visible;
-		pointer-events: all;
 	}
 	.option {
 		position: relative;
@@ -179,18 +170,34 @@ option {
 		color: white;
 		line-height: 60px;
 		cursor: pointer;
-		border-radius: 5px;
+	}
+	.option:last-child {
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
 	}
 	.option:hover,
 	.option:focus {
-		cursor: pointer;
 		background-color: #b2b2b2;
 	}
 	.option.selected {
 		display: none;
 	}
-	.open .arrow {
-		transform: rotate(180deg);
+	.open {
+		.options {
+			visibility: visible;
+			pointer-events: all;
+		}
+		.select_trigger {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		.arrow {
+			transform: rotate(180deg);
+		}
+		.option:nth-child(2) {
+			border-top: solid 1px white;
+			border-bottom: solid 1px white;
+		}
 	}
 }
 
@@ -291,6 +298,7 @@ option {
 	top: 0;
 	background-color: rgba(196, 196, 196, 0.6);
 	border: none;
+	padding: 0;
 	.close,
 	.next,
 	.prev {

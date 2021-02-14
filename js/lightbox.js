@@ -8,22 +8,23 @@ class Lightbox {
 	}
 
 	updateLightbox() {
-		this.lightboxContent.innerHTML = `<a><i class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)" aria-label="Previous image"></i></a>
-        <a><i class="fas fa-times close" onclick="lb.closeLightbox()" aria-label="Close dialog"></i></a>
-        <a><i class="fas fa-chevron-right next" onclick="lb.changeSlide(1)" aria-label="Next image"></i></a>`;
+		this.lightboxContent.innerHTML = `<span class="fas fa-chevron-left prev" onclick="lb.changeSlide(-1)" aria-label="Previous image" tabindex="0"></span>
+        <span class="fas fa-times close" onclick="lb.closeLightbox()" aria-label="Close dialog" tabindex="0"></span>
+        <span class="fas fa-chevron-right next" onclick="lb.changeSlide(1)" aria-label="Next image" tabindex="0"></span>`;
+
 		for (let i = 0; i < this.app.gallery.length; i++) {
 			const newLightboxCard = document.createElement('div');
 			newLightboxCard.className = 'lightboxCard';
 			// si le fichier est une image
 			if (this.app.gallery[i].image) {
 				newLightboxCard.innerHTML = `
-                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].alt}">
+                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].alt}" tabindex="0">
                     <p class="img_title">${this.app.gallery[i].alt}</p>
                 `;
 				// si le fichier est une video
 			} else if (this.app.gallery[i].video) {
 				newLightboxCard.innerHTML = `
-                    <video controls>
+                    <video controls class="video" tabindex="0">
                         <source src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4" alt="${this.app.gallery[i].alt}">
                     </video>
                     <p class="img_title">${this.app.gallery[i].alt}</p>
@@ -39,6 +40,7 @@ class Lightbox {
 
 	showSlides(n) {
 		this.slides[n].style.display = 'block';
+
 		// Visibility pour pas déplacer l'image quand l'element disparait
 		this.slideIndex == 0
 			? (document.querySelector('.prev').style.visibility = 'hidden')
@@ -61,6 +63,7 @@ class Lightbox {
 
 	openLightbox() {
 		this.lightbox.style.display = 'flex';
+		document.querySelector('.lightboxCard video').focus();
 	}
 
 	closeLightbox() {
