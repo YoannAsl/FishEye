@@ -14,13 +14,6 @@ class Image {
 				</div>
 			</div>
 			`;
-			card.children[0].addEventListener('keydown', function (e) {
-				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
-					lb.openLightbox();
-					lb.currentSlide(i);
-				}
-			});
 		};
 	}
 }

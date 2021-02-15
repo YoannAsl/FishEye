@@ -72,6 +72,8 @@ class Photographers {
 							.querySelector('.options')
 							.setAttribute('aria-activedescendant', this.textContent);
 					}
+					document.querySelector('.select').classList.toggle('open');
+					e.preventDefault();
 					app.sortGallery();
 					lb.updateLightbox();
 				}
@@ -181,6 +183,7 @@ class Photographers {
 		for (let i = 0; i < this.gallery.length; i++) {
 			const newCard = document.createElement('div');
 			newCard.className = 'card';
+
 			// si le fichier est une image
 			if (this.gallery[i].image) {
 				this.factory
@@ -195,6 +198,13 @@ class Photographers {
 			}
 			this.cardsContainer.append(newCard);
 
+			newCard.children[0].addEventListener('keydown', function (e) {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					lb.openLightbox();
+					lb.currentSlide(i);
+				}
+			});
 			document
 				.querySelector(`#like_icon_${this.gallery[i].id}`)
 				.addEventListener('keydown', (e) => {

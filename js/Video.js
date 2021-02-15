@@ -16,12 +16,6 @@ class Video {
 				</div>
 			</div>
 			`;
-			card.children[0].addEventListener('keydown', function (e) {
-				if (e.key === 'Enter' || e.key === ' ') {
-					lb.openLightbox();
-					lb.currentSlide(i);
-				}
-			});
 		};
 	}
 }

@@ -200,6 +200,7 @@ option {
   color: white;
   line-height: 60px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .select_wrapper .option:last-child {
@@ -229,11 +230,6 @@ option {
 .select_wrapper .open .arrow {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-}
-
-.select_wrapper .open .option:nth-child(2) {
-  border-top: solid 1px white;
-  border-bottom: solid 1px white;
 }
 
 .cards_container {
@@ -438,6 +434,33 @@ option {
   .banner .tagline,
   .banner .tags {
     width: 150%;
+  }
+  .modal div h1 {
+    font-size: 32px;
+    margin-bottom: 9px;
+  }
+  .modal div .close {
+    font-size: 32px;
+    top: 20px;
+    right: 20px;
+  }
+  .modal div form * {
+    font-size: 20px;
+  }
+  .modal div form label {
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  .modal div form input {
+    height: 35px;
+  }
+  .modal div form textarea {
+    height: 90px;
+    margin-bottom: 20px;
+  }
+  .modal div form button {
+    margin: 0 auto;
+    height: 35px;
   }
   .lightbox .lightbox_content .lightboxCard img,
   .lightbox .lightbox_content .lightboxCard video {

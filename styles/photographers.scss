@@ -170,6 +170,7 @@ option {
 		color: white;
 		line-height: 60px;
 		cursor: pointer;
+		font-weight: bold;
 	}
 	.option:last-child {
 		border-bottom-left-radius: 5px;
@@ -193,10 +194,6 @@ option {
 		}
 		.arrow {
 			transform: rotate(180deg);
-		}
-		.option:nth-child(2) {
-			border-top: solid 1px white;
-			border-bottom: solid 1px white;
 		}
 	}
 }
@@ -360,6 +357,39 @@ option {
 		.tagline,
 		.tags {
 			width: 150%;
+		}
+	}
+	.modal {
+		div {
+			h1 {
+				font-size: 32px;
+				margin-bottom: 9px;
+			}
+			.close {
+				font-size: 32px;
+				top: 20px;
+				right: 20px;
+			}
+			form {
+				* {
+					font-size: 20px;
+				}
+				label {
+					margin-top: 14px;
+					margin-bottom: 6px;
+				}
+				input {
+					height: 35px;
+				}
+				textarea {
+					height: 90px;
+					margin-bottom: 20px;
+				}
+				button {
+					margin: 0 auto;
+					height: 35px;
+				}
+			}
 		}
 	}
 	.lightbox {

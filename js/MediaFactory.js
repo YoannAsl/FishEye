@@ -3,7 +3,7 @@ class MediaFactory {
 		this.createMedia = (type, element) => {
 			let media;
 			if (type === 'image') {
-				media = new Image(element);
+				media = new Image();
 			} else if (type === 'video') {
 				media = new Video();
 			}
