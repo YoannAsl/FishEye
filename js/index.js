@@ -24,9 +24,9 @@ class Index {
 				listTag += `<a class="tag" href="#" onclick="index.updatePhList(this.children[0].innerHTML)">#<span aria-label="${e}">${e}</span></a>`;
 			});
 
-			const newCard = document.createElement('div');
+			const newCard = document.createElement('article');
 
-			let url = '/photographer.html';
+			let url = './photographer.html';
 			url = url + '?id=' + e.id;
 
 			newCard.className = 'card';

@@ -1,3 +1,4 @@
+/*global lb*/
 class Photographers {
 	constructor() {
 		this.queryString = window.location.search;
@@ -181,7 +182,7 @@ class Photographers {
 	updateGallery() {
 		this.cardsContainer.innerHTML = '';
 		for (let i = 0; i < this.gallery.length; i++) {
-			const newCard = document.createElement('div');
+			const newCard = document.createElement('article');
 			newCard.className = 'card';
 
 			// si le fichier est une image

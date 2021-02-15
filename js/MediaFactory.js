@@ -1,6 +1,6 @@
 class MediaFactory {
 	constructor() {
-		this.createMedia = (type, element) => {
+		this.createMedia = (type) => {
 			let media;
 			if (type === 'image') {
 				media = new Image();
