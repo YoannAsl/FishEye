@@ -18,14 +18,14 @@ class Lightbox {
 			// si le fichier est une image
 			if (this.app.gallery[i].image) {
 				newLightboxCard.innerHTML = `
-                    <img src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].alt}" tabindex="0">
+                    <img src="../assets/images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].image}" alt="${this.app.gallery[i].alt}" tabindex="0">
                     <p class="img_title">${this.app.gallery[i].alt}</p>
                 `;
 				// si le fichier est une video
 			} else if (this.app.gallery[i].video) {
 				newLightboxCard.innerHTML = `
                     <video controls class="video" tabindex="0">
-                        <source src="images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4" alt="${this.app.gallery[i].alt}">
+                        <source src="../assets/images/${this.app.gallery[i].photographerId}/${this.app.gallery[i].video}" type="video/mp4" alt="${this.app.gallery[i].alt}">
                     </video>
                     <p class="img_title">${this.app.gallery[i].alt}</p>
                 `;

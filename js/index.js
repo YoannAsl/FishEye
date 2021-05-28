@@ -32,7 +32,7 @@ class Index {
 			newCard.className = 'card';
 			newCard.innerHTML = `
                 <a href="${url}" aria-label="${e.name}">
-                    <img src="images/Photographers_ID_Photos/${e.portrait}">
+                    <img src="../assets/images/Photographers_ID_Photos/${e.portrait}">
                     <h2>${e.name}</h2>
                 </a>
                 <p class="location">${e.city}, ${e.country}</p>

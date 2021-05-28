@@ -1,9 +1,8 @@
 class Video {
-	constructor() {
-		this.createHTML = (card, element, i) => {
-			card.innerHTML = `
+	createHTML(card, element, i) {
+		card.innerHTML = `
 			<video alt="${element.alt}" onclick="lb.openLightbox(); lb.currentSlide(${i})" tabindex="0">
-				<source src="images/${element.photographerId}/${element.video}" type="video/mp4">
+				<source src="../assets/images/${element.photographerId}/${element.video}" type="video/mp4">
 			</video>
 			<div class="card_text">
 				<p class="img_title">${element.alt}</p>
@@ -16,6 +15,5 @@ class Video {
 				</div>
 			</div>
 			`;
-		};
 	}
 }

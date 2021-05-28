@@ -1,4 +1,3 @@
-/*global lb*/
 class Photographers {
 	constructor() {
 		this.queryString = window.location.search;
@@ -51,7 +50,10 @@ class Photographers {
 					).textContent = this.textContent;
 					document
 						.querySelector('.options')
-						.setAttribute('aria-activedescendant', this.textContent);
+						.setAttribute(
+							'aria-activedescendant',
+							this.textContent
+						);
 				}
 				app.sortGallery();
 				lb.updateLightbox();
@@ -71,7 +73,10 @@ class Photographers {
 						).textContent = this.textContent;
 						document
 							.querySelector('.options')
-							.setAttribute('aria-activedescendant', this.textContent);
+							.setAttribute(
+								'aria-activedescendant',
+								this.textContent
+							);
 					}
 					document.querySelector('.select').classList.toggle('open');
 					e.preventDefault();
@@ -105,14 +110,16 @@ class Photographers {
 			}
 		});
 
-		document.querySelector('#submit_button').addEventListener('click', (e) => {
-			e.preventDefault();
-			console.log(
-				document.querySelector('#prenom').value,
-				document.querySelector('#nom').value,
-				document.querySelector('#message').value
-			);
-		});
+		document
+			.querySelector('#submit_button')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+				console.log(
+					document.querySelector('#prenom').value,
+					document.querySelector('#nom').value,
+					document.querySelector('#message').value
+				);
+			});
 
 		document.querySelector('.close').addEventListener('keydown', (e) => {
 			if (e.key === 'Enter' || e.key === ' ') {
@@ -158,7 +165,7 @@ class Photographers {
                             ${listTag}
                         </div>
                     </div>
-                    <img src="./images/Photographers_ID_Photos/${ph.portrait}" alt="" />
+                    <img src="../assets/images/Photographers_ID_Photos/${ph.portrait}" alt="" />
                 `;
 
 				this.main.prepend(bannerContent);
@@ -256,12 +263,12 @@ class Photographers {
 	}
 
 	addLike(tag) {
-		let tagselect = document.querySelector(`#like_${tag}`);
+		const tagselect = document.querySelector(`#like_${tag}`);
 		let nbLikes = parseInt(tagselect.textContent);
 		nbLikes += 1;
 		tagselect.textContent = nbLikes;
 
-		let totalLikesSelector = document.querySelector('#totalLikes');
+		const totalLikesSelector = document.querySelector('#totalLikes');
 		totalLikesSelector.innerHTML++;
 	}
 
